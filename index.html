@@ -76,11 +76,19 @@
     }
 
     .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
       font-family: var(--font-primary);
       font-size: 1.1rem;
       font-weight: 700;
       letter-spacing: 0.5px;
       text-transform: uppercase;
+    }
+
+    .nav-logo img {
+      height: 36px;
+      width: auto;
     }
 
     .nav-logo span {
@@ -969,11 +977,19 @@
     }
 
     .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
       font-family: var(--font-primary);
       font-size: 0.85rem;
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 1px;
+    }
+
+    .footer-brand img {
+      height: 30px;
+      width: auto;
     }
 
     .footer-links {
@@ -1298,8 +1314,11 @@
   <nav class="navbar" id="navbar">
     <div class="container">
       <a href="#" class="nav-logo">
-        Dr. Samuel Chagas
-        <span>Quiropraxia</span>
+        <img src="./assets/images/Logo.png" alt="Logo Dr. Samuel Chagas">
+        <div>
+          Dr. Samuel Chagas
+          <span>Quiropraxia</span>
+        </div>
       </a>
       <ul class="nav-links">
         <li><a href="#sobre">Sobre</a></li>
@@ -1805,7 +1824,10 @@
   <!-- ========== FOOTER ========== -->
   <footer class="footer">
     <div class="container">
-      <div class="footer-brand">Dr. Samuel Chagas</div>
+      <div class="footer-brand">
+        <img src="./assets/images/Logo.png" alt="Logo Dr. Samuel Chagas">
+        Dr. Samuel Chagas
+      </div>
       <div class="footer-links">
         <a href="https://www.instagram.com/dr.samuelchagas/" target="_blank">Instagram</a>
         <a href="https://wa.me/5511999999999" target="_blank">WhatsApp</a>
