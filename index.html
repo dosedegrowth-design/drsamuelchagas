@@ -1,0 +1,1902 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dr. Samuel Chagas | Quiropraxia em São Paulo</title>
+  <meta name="description" content="Quiropraxia e Fisioterapia em São Paulo. Tratando o corpo como um todo, ajudando quem tem dor. Agende sua avaliação.">
+  <meta name="theme-color" content="#0A0A0A">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ========== RESET & BASE ========== */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --black: #0A0A0A;
+      --dark: #111111;
+      --dark-2: #1A1A1A;
+      --dark-3: #2A2A2A;
+      --gray: #666666;
+      --gray-light: #999999;
+      --white: #FFFFFF;
+      --white-soft: #F5F5F5;
+      --accent: #CCCCCC;
+      --font-primary: 'Space Grotesk', sans-serif;
+      --font-body: 'Inter', sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--black);
+      color: var(--white);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ========== NAVBAR ========== */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 20px 0;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .navbar.scrolled {
+      padding: 12px 0;
+      background: rgba(10, 10, 10, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .navbar .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: var(--font-primary);
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .nav-logo span {
+      color: var(--gray-light);
+      font-weight: 400;
+      font-size: 0.75rem;
+      display: block;
+      letter-spacing: 2px;
+      margin-top: 2px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: var(--gray-light);
+      transition: color 0.3s;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--white);
+      transition: width 0.3s;
+    }
+
+    .nav-links a:hover { color: var(--white); }
+    .nav-links a:hover::after { width: 100%; }
+
+    .nav-cta {
+      background: var(--white);
+      color: var(--black);
+      padding: 10px 24px;
+      border-radius: 100px;
+      font-family: var(--font-primary);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      transition: all 0.3s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .nav-cta:hover {
+      background: var(--gray-light);
+      transform: scale(1.05);
+    }
+
+    .nav-mobile-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 8px;
+      background: none;
+      border: none;
+    }
+
+    .nav-mobile-toggle span {
+      width: 24px;
+      height: 2px;
+      background: var(--white);
+      transition: all 0.3s;
+    }
+
+    /* Mobile nav */
+    .nav-mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(10, 10, 10, 0.98);
+      backdrop-filter: blur(30px);
+      z-index: 999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+    }
+
+    .nav-mobile-menu.active { display: flex; }
+
+    .nav-mobile-menu a {
+      font-family: var(--font-primary);
+      font-size: 1.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--white);
+      letter-spacing: 2px;
+    }
+
+    .nav-mobile-close {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      background: none;
+      border: none;
+      color: var(--white);
+      font-size: 2rem;
+      cursor: pointer;
+    }
+
+    /* ========== HERO ========== */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 700px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      z-index: 1;
+    }
+
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(10,10,10,0.55) 0%,
+        rgba(10,10,10,0.45) 40%,
+        rgba(10,10,10,0.5) 70%,
+        rgba(10,10,10,0.7) 100%
+      );
+      z-index: 1;
+    }
+
+    .hero-chevrons {
+      position: absolute;
+      right: -100px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 2;
+      opacity: 0.04;
+    }
+
+    .hero-chevrons svg {
+      width: 400px;
+      height: auto;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      text-align: center;
+      max-width: 900px;
+      padding: 0 24px;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gray-light);
+      margin-bottom: 24px;
+      border: 1px solid rgba(255,255,255,0.15);
+      padding: 8px 20px;
+      border-radius: 100px;
+    }
+
+    .hero-title {
+      font-family: var(--font-primary);
+      font-size: clamp(2.5rem, 7vw, 5.5rem);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -2px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.6);
+    }
+
+    .hero-title em {
+      font-style: normal;
+      color: var(--gray-light);
+    }
+
+    .hero-subtitle {
+      font-size: 1.1rem;
+      color: var(--gray-light);
+      max-width: 500px;
+      margin: 0 auto 40px;
+      font-weight: 300;
+      line-height: 1.7;
+      text-shadow: 0 1px 10px rgba(0,0,0,0.5);
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--white);
+      color: var(--black);
+      padding: 16px 40px;
+      border-radius: 100px;
+      font-family: var(--font-primary);
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      border: none;
+      cursor: pointer;
+    }
+
+    .hero-cta:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 40px rgba(255,255,255,0.15);
+    }
+
+    .hero-cta svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      animation: bounceDown 2s infinite;
+    }
+
+    .hero-scroll span {
+      font-size: 0.65rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+
+    .hero-scroll svg {
+      width: 20px;
+      color: var(--gray);
+    }
+
+    @keyframes bounceDown {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(8px); }
+    }
+
+    /* ========== MARQUEE TICKER ========== */
+    .marquee {
+      background: var(--dark-2);
+      padding: 16px 0;
+      overflow: hidden;
+      border-top: 1px solid rgba(255,255,255,0.04);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marqueeScroll 25s linear infinite;
+    }
+
+    .marquee-content {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      padding-right: 40px;
+      flex-shrink: 0;
+    }
+
+    .marquee-content span {
+      font-family: var(--font-primary);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gray-light);
+      white-space: nowrap;
+    }
+
+    .marquee-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--gray);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* Chevron separator in marquee */
+    .marquee-chevron {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+      opacity: 0.5;
+    }
+
+    @keyframes marqueeScroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ========== SECTION: SOBRE ========== */
+    .sobre {
+      position: relative;
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .sobre-bg {
+      position: absolute;
+      inset: 0;
+      background: var(--dark-2);
+      /* PLACEHOLDER: substituir por imagem real */
+      z-index: 1;
+    }
+
+    .sobre-bg::before {
+      content: 'INSERIR FOTO — Dr. Samuel no consultório / fazendo ajuste (fullscreen)';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: rgba(255,255,255,0.06);
+      font-size: 1rem;
+      font-family: var(--font-primary);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      white-space: nowrap;
+      z-index: 0;
+    }
+
+    .sobre-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.7) 50%, rgba(10,10,10,0.4) 100%);
+      z-index: 2;
+    }
+
+    .sobre-content {
+      position: relative;
+      z-index: 3;
+      padding: 120px 0;
+      max-width: 600px;
+    }
+
+    .section-tag {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .sobre-title {
+      font-family: var(--font-primary);
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 800;
+      line-height: 1.1;
+      text-transform: uppercase;
+      letter-spacing: -1px;
+      margin-bottom: 32px;
+    }
+
+    .sobre-text {
+      color: var(--gray-light);
+      font-size: 1rem;
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+
+    .sobre-registro {
+      display: inline-block;
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gray);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 8px 16px;
+      border-radius: 4px;
+      margin-top: 24px;
+    }
+
+    /* ========== SECTION: SERVICOS ========== */
+    .servicos {
+      padding: 120px 0;
+      background: var(--black);
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .section-title {
+      font-family: var(--font-primary);
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: -1px;
+      margin-bottom: 16px;
+    }
+
+    .section-subtitle {
+      font-size: 1rem;
+      color: var(--gray-light);
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .servicos-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .servico-card {
+      background: var(--dark-2);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+      padding: 48px 36px;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .servico-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+
+    .servico-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255,255,255,0.12);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    }
+
+    .servico-card:hover::before { opacity: 1; }
+
+    .servico-icon {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 24px;
+      color: var(--white);
+      opacity: 0.8;
+    }
+
+    .servico-card h3 {
+      font-family: var(--font-primary);
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .servico-card p {
+      color: var(--gray-light);
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+
+    /* ========== SECTION: METODO ========== */
+    .metodo {
+      padding: 120px 0;
+      background: var(--dark);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .metodo-bg-pattern {
+      position: absolute;
+      top: 50%;
+      right: -80px;
+      transform: translateY(-50%);
+      opacity: 0.03;
+      z-index: 0;
+    }
+
+    .metodo .container {
+      position: relative;
+      z-index: 1;
+    }
+
+    .metodo-quote {
+      font-family: var(--font-primary);
+      font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+      font-weight: 800;
+      text-transform: uppercase;
+      text-align: center;
+      letter-spacing: -1px;
+      margin-bottom: 80px;
+      line-height: 1.2;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .metodo-quote em {
+      font-style: normal;
+      color: var(--gray-light);
+    }
+
+    .metodo-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .metodo-step {
+      display: flex;
+      gap: 32px;
+      align-items: flex-start;
+      padding: 40px 0;
+      position: relative;
+    }
+
+    .metodo-step:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      left: 23px;
+      top: 88px;
+      bottom: 0;
+      width: 1px;
+      background: rgba(255,255,255,0.08);
+    }
+
+    .metodo-step-number {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-primary);
+      font-size: 1rem;
+      font-weight: 700;
+      flex-shrink: 0;
+      color: var(--white);
+    }
+
+    .metodo-step h3 {
+      font-family: var(--font-primary);
+      font-size: 1.2rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .metodo-step p {
+      color: var(--gray-light);
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+
+    /* ========== SECTION: RESULTADOS / PROVA SOCIAL ========== */
+    .resultados {
+      padding: 120px 0;
+      background: var(--black);
+      overflow: hidden;
+    }
+
+    .resultados-title {
+      font-family: var(--font-primary);
+      font-size: clamp(2rem, 5vw, 4rem);
+      font-weight: 800;
+      text-transform: uppercase;
+      text-align: center;
+      letter-spacing: -2px;
+      margin-bottom: 48px;
+      line-height: 1.1;
+    }
+
+
+    /* Contadores */
+    .contadores {
+      display: flex;
+      justify-content: center;
+      gap: 64px;
+      margin-bottom: 80px;
+      flex-wrap: wrap;
+    }
+
+    .contador {
+      text-align: center;
+    }
+
+    .contador-number {
+      font-family: var(--font-primary);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      display: block;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .contador-label {
+      font-size: 0.75rem;
+      color: var(--gray);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    /* Depoimentos */
+    .depoimentos-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .depoimento-card {
+      background: var(--dark-2);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+      padding: 36px;
+    }
+
+    .depoimento-stars {
+      color: var(--white);
+      margin-bottom: 16px;
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+    }
+
+    .depoimento-text {
+      font-size: 0.95rem;
+      color: var(--gray-light);
+      line-height: 1.7;
+      margin-bottom: 24px;
+      font-style: italic;
+    }
+
+    .depoimento-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .depoimento-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--dark-3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.5rem;
+      color: var(--gray);
+    }
+
+    .depoimento-name {
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+
+    .depoimento-role {
+      font-size: 0.75rem;
+      color: var(--gray);
+    }
+
+    /* ========== SECTION: PARA QUEM ========== */
+    .para-quem {
+      padding: 120px 0;
+      background: var(--dark);
+    }
+
+    .para-quem-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .para-quem-card {
+      background: var(--dark-2);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+      padding: 40px 28px;
+      text-align: center;
+      transition: all 0.4s;
+    }
+
+    .para-quem-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255,255,255,0.12);
+    }
+
+    .para-quem-icon {
+      width: 56px;
+      height: 56px;
+      margin: 0 auto 20px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.05);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .para-quem-icon svg {
+      width: 24px;
+      height: 24px;
+      color: var(--white);
+    }
+
+    .para-quem-card h3 {
+      font-family: var(--font-primary);
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      letter-spacing: 0.5px;
+    }
+
+    .para-quem-card p {
+      font-size: 0.85rem;
+      color: var(--gray-light);
+      line-height: 1.6;
+    }
+
+    /* ========== SECTION: VÍDEOS INSTAGRAM ========== */
+    .videos-section {
+      padding: 120px 0;
+      background: var(--black);
+    }
+
+    .videos-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .video-card {
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--dark-2);
+    }
+
+    .video-card .instagram-media {
+      margin: 0 !important;
+      min-width: 0 !important;
+      max-width: 100% !important;
+      width: 100% !important;
+    }
+
+    @media (max-width: 1024px) {
+      .videos-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .videos-grid {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+
+    /* ========== SECTION: CTA FINAL ========== */
+    .cta-final {
+      padding: 160px 0;
+      background: var(--black);
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .cta-final-bg {
+      position: absolute;
+      inset: 0;
+      opacity: 0.03;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cta-final .container {
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-final-title {
+      font-family: var(--font-primary);
+      font-size: clamp(2.5rem, 7vw, 5rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -2px;
+      line-height: 1.05;
+      margin-bottom: 24px;
+    }
+
+    .cta-final-sub {
+      font-size: 1.1rem;
+      color: var(--gray-light);
+      max-width: 500px;
+      margin: 0 auto 48px;
+      line-height: 1.7;
+    }
+
+    .cta-final-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--white);
+      color: var(--black);
+      padding: 20px 48px;
+      border-radius: 100px;
+      font-family: var(--font-primary);
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: all 0.4s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .cta-final-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 60px rgba(255,255,255,0.2);
+    }
+
+    .cta-final-btn svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    .cta-final-location {
+      margin-top: 32px;
+      font-size: 0.75rem;
+      color: var(--gray);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    /* ========== FOOTER ========== */
+    .footer {
+      padding: 48px 0;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      background: var(--black);
+    }
+
+    .footer .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-brand {
+      font-family: var(--font-primary);
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-links a {
+      font-size: 0.8rem;
+      color: var(--gray);
+      transition: color 0.3s;
+    }
+
+    .footer-links a:hover { color: var(--white); }
+
+    .footer-copy {
+      font-size: 0.75rem;
+      color: var(--gray);
+    }
+
+    /* ========== WHATSAPP FLOAT ========== */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 900;
+      width: 56px;
+      height: 56px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 30px rgba(37, 211, 102, 0.5);
+    }
+
+    .whatsapp-float svg {
+      width: 28px;
+      height: 28px;
+      color: white;
+    }
+
+    /* ========== SCROLL REVEAL ANIMATIONS ========== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* Hero elements animate on load via CSS, not observer */
+    .hero .reveal {
+      animation: heroReveal 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+    .hero .reveal.reveal-delay-1 { animation-delay: 0.15s; }
+    .hero .reveal.reveal-delay-2 { animation-delay: 0.3s; }
+    .hero .reveal.reveal-delay-3 { animation-delay: 0.45s; }
+
+    @keyframes heroReveal {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 1024px) {
+      .servicos-grid { grid-template-columns: repeat(2, 1fr); }
+      .depoimentos-grid { grid-template-columns: 1fr; }
+      .para-quem-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-cta.desktop { display: none; }
+      .nav-mobile-toggle { display: flex; }
+
+      .hero-chevrons { display: none; }
+
+      .sobre-overlay {
+        background: linear-gradient(to bottom, rgba(10,10,10,0.95), rgba(10,10,10,0.85));
+      }
+
+      .sobre-content { padding: 100px 0 80px; }
+
+      .servicos-grid { grid-template-columns: 1fr; }
+
+      .contadores { gap: 32px; }
+
+      .para-quem-grid { grid-template-columns: 1fr; }
+
+      .metodo-step { gap: 20px; }
+      .metodo-step-number { width: 40px; height: 40px; font-size: 0.85rem; }
+
+      .footer .container {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    /* ========== SECTION: PARALLAX FIXO (estilo Odd neve) ========== */
+    .parallax-section {
+      position: relative;
+      height: 100vh;
+      min-height: 600px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .parallax-section-bg {
+      position: absolute;
+      inset: 0;
+      background-attachment: fixed;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      z-index: 1;
+      /* Placeholder bg */
+      background-color: var(--dark-3);
+    }
+
+    /* Placeholder indicator for the parallax image */
+    .parallax-section-bg::after {
+      content: attr(data-placeholder);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: rgba(255,255,255,0.12);
+      font-size: 1rem;
+      font-family: var(--font-primary);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      white-space: nowrap;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .parallax-section-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(10,10,10,0.6) 0%,
+        rgba(10,10,10,0.5) 40%,
+        rgba(10,10,10,0.5) 60%,
+        rgba(10,10,10,0.7) 100%
+      );
+      z-index: 2;
+    }
+
+    .parallax-section-content {
+      position: relative;
+      z-index: 3;
+      text-align: center;
+      max-width: 900px;
+      padding: 0 24px;
+    }
+
+    .parallax-section-title {
+      font-family: var(--font-primary);
+      font-size: clamp(2.5rem, 7vw, 5.5rem);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -2px;
+      text-transform: uppercase;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.7);
+    }
+
+    .parallax-section-title em {
+      font-style: normal;
+      color: var(--gray-light);
+    }
+
+    /* Elliptical divider above/below parallax (estilo Odd) */
+    .ellipse-divider {
+      position: relative;
+      z-index: 10;
+      height: 30px;
+      overflow: visible;
+    }
+
+    .ellipse-divider-top {
+      background: var(--black);
+      margin-bottom: -1px;
+    }
+
+    .ellipse-divider-top::after {
+      content: '';
+      position: absolute;
+      bottom: -25px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120%;
+      height: 50px;
+      background: var(--black);
+      border-radius: 0 0 50% 50%;
+      z-index: 10;
+    }
+
+    .ellipse-divider-top .ellipse-chevron {
+      position: absolute;
+      bottom: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 20;
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: bounceDown 2s infinite;
+    }
+
+    .ellipse-divider-top .ellipse-chevron svg {
+      width: 16px;
+      height: 16px;
+      color: var(--gray-light);
+    }
+
+    .ellipse-divider-bottom {
+      background: var(--black);
+      margin-top: -1px;
+    }
+
+    .ellipse-divider-bottom::before {
+      content: '';
+      position: absolute;
+      top: -25px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120%;
+      height: 50px;
+      background: var(--black);
+      border-radius: 50% 50% 0 0;
+      z-index: 10;
+    }
+
+    .ellipse-divider-bottom .ellipse-chevron {
+      position: absolute;
+      top: -28px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 20;
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .ellipse-divider-bottom .ellipse-chevron svg {
+      width: 20px;
+      height: 20px;
+      color: var(--gray-light);
+      transform: rotate(180deg);
+    }
+
+    /* ========== IMAGE PLACEHOLDER SYSTEM ========== */
+    .img-placeholder {
+      position: relative;
+      background: var(--dark-3);
+      border: 2px dashed rgba(255,255,255,0.08);
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .img-placeholder::before {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 40px;
+      border: 2px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.15)' stroke-width='1.5'%3E%3Crect x='3' y='3' width='18' height='18' rx='2'/%3E%3Ccircle cx='8.5' cy='8.5' r='1.5'/%3E%3Cpath d='M21 15l-5-5L5 21'/%3E%3C/svg%3E") center/60% no-repeat;
+    }
+
+    .img-placeholder::after {
+      content: attr(data-label);
+      font-size: 0.65rem;
+      color: rgba(255,255,255,0.2);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-family: var(--font-primary);
+      text-align: center;
+      max-width: 80%;
+    }
+
+    /* ========== CHEVRON SVG PATTERN ========== */
+    .chevron-divider {
+      display: flex;
+      justify-content: center;
+      padding: 40px 0;
+      opacity: 0.06;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== NAVBAR ========== -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="#" class="nav-logo">
+        Dr. Samuel Chagas
+        <span>Quiropraxia</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#servicos">Serviços</a></li>
+        <li><a href="#metodo">Método</a></li>
+        <li><a href="#resultados">Resultados</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+      <a href="https://wa.me/5511999999999?text=Ol%C3%A1%20Dr.%20Samuel!%20Gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o."
+         target="_blank" class="nav-cta desktop">Agendar</a>
+      <button class="nav-mobile-toggle" onclick="toggleMobileMenu()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="nav-mobile-menu" id="mobileMenu">
+    <button class="nav-mobile-close" onclick="toggleMobileMenu()">&times;</button>
+    <a href="#sobre" onclick="toggleMobileMenu()">Sobre</a>
+    <a href="#servicos" onclick="toggleMobileMenu()">Serviços</a>
+    <a href="#metodo" onclick="toggleMobileMenu()">Método</a>
+    <a href="#resultados" onclick="toggleMobileMenu()">Resultados</a>
+    <a href="#contato" onclick="toggleMobileMenu()">Contato</a>
+    <a href="https://wa.me/5511999999999?text=Ol%C3%A1%20Dr.%20Samuel!%20Gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o."
+       target="_blank" class="nav-cta">Agendar</a>
+  </div>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero">
+    <!--
+      =============================================
+      📸 IMAGEM 1: HERO BACKGROUND
+      =============================================
+      Adicione a foto como background-image inline no div abaixo:
+      style="background-image: url('./assets/images/hero-bg.png');"
+
+      Sugestão: Foto do Dr. Samuel de corpo inteiro, em pé,
+      fundo escuro ou no consultório. Transmitir confiança.
+      Dimensão ideal: 1920x1080 (paisagem, alta resolução)
+      A foto vai ter um overlay escuro por cima, então pode ser clara.
+    -->
+    <div class="hero-bg" style="background-image: url('./assets/images/hero-bg.png');"></div>
+
+    <!-- Decorative Chevrons -->
+    <div class="hero-chevrons">
+      <svg viewBox="0 0 200 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 0L100 60L200 0V80L100 140L0 80V0Z" fill="white" opacity="0.3"/>
+        <path d="M0 120L100 180L200 120V200L100 260L0 200V120Z" fill="white" opacity="0.25"/>
+        <path d="M0 240L100 300L200 240V320L100 380L0 320V240Z" fill="white" opacity="0.2"/>
+        <path d="M0 360L100 420L200 360V440L100 500L0 440V360Z" fill="white" opacity="0.15"/>
+        <path d="M0 480L100 540L200 480V560L100 620L0 560V480Z" fill="white" opacity="0.1"/>
+      </svg>
+    </div>
+
+    <div class="hero-content">
+      <div class="hero-tag reveal">Fisioterapeuta & Quiropraxista</div>
+      <h1 class="hero-title reveal reveal-delay-1">
+        Tratando o corpo<br><em>como um todo.</em>
+      </h1>
+      <p class="hero-subtitle reveal reveal-delay-2">
+        Quiropraxia e fisioterapia especializada em São Paulo.
+        Alívio da dor, performance e qualidade de vida.
+      </p>
+      <a href="https://wa.me/5511999999999?text=Ol%C3%A1%20Dr.%20Samuel!%20Gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o."
+         target="_blank" class="hero-cta reveal reveal-delay-3">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        Agendar Consulta
+      </a>
+    </div>
+
+    <div class="hero-scroll">
+      <span>Scroll</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M12 5v14M5 12l7 7 7-7"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ========== MARQUEE TICKER ========== -->
+  <div class="marquee">
+    <div class="marquee-track">
+      <div class="marquee-content">
+        <span>Quiropraxia</span>
+        <svg class="marquee-chevron" viewBox="0 0 16 16" fill="currentColor"><path d="M0 0L8 6L16 0V6L8 12L0 6V0Z"/></svg>
+        <span>Fisioterapia</span>
+        <svg class="marquee-chevron" viewBox="0 0 16 16" fill="currentColor"><path d="M0 0L8 6L16 0V6L8 12L0 6V0Z"/></svg>
+        <span>Alta Performance</span>
+        <svg class="marquee-chevron" viewBox="0 0 16 16" fill="currentColor"><path d="M0 0L8 6L16 0V6L8 12L0 6V0Z"/></svg>
+        <span>Alívio da Dor</span>
+        <svg class="marquee-chevron" viewBox="0 0 16 16" fill="currentColor"><path d="M0 0L8 6L16 0V6L8 12L0 6V0Z"/></svg>
+        <span>Coluna</span>
+        <svg class="marquee-chevron" viewBox="0 0 16 16" fill="currentColor"><path d="M0 0L8 6L16 0V6L8 12L0 6V0Z"/></svg>
+        <span>Recovery</span>
+        <svg class="marquee-chevron" viewBox="0 0 16 16" fill="currentColor"><path d="M0 0L8 6L16 0V6L8 12L0 6V0Z"/></svg>
+        <span>São Paulo</span>
+        <svg class="marquee-chevron" viewBox="0 0 16 16" fill="currentColor"><path d="M0 0L8 6L16 0V6L8 12L0 6V0Z"/></svg>
+      </div>
+      <div class="marquee-content">
+        <span>Quiropraxia</span>
+        <svg class="marquee-chevron" viewBox="0 0 16 16" fill="currentColor"><path d="M0 0L8 6L16 0V6L8 12L0 6V0Z"/></svg>
+        <span>Fisioterapia</span>
+        <svg class="marquee-chevron" viewBox="0 0 16 16" fill="currentColor"><path d="M0 0L8 6L16 0V6L8 12L0 6V0Z"/></svg>
+        <span>Alta Performance</span>
+        <svg class="marquee-chevron" viewBox="0 0 16 16" fill="currentColor"><path d="M0 0L8 6L16 0V6L8 12L0 6V0Z"/></svg>
+        <span>Alívio da Dor</span>
+        <svg class="marquee-chevron" viewBox="0 0 16 16" fill="currentColor"><path d="M0 0L8 6L16 0V6L8 12L0 6V0Z"/></svg>
+        <span>Coluna</span>
+        <svg class="marquee-chevron" viewBox="0 0 16 16" fill="currentColor"><path d="M0 0L8 6L16 0V6L8 12L0 6V0Z"/></svg>
+        <span>Recovery</span>
+        <svg class="marquee-chevron" viewBox="0 0 16 16" fill="currentColor"><path d="M0 0L8 6L16 0V6L8 12L0 6V0Z"/></svg>
+        <span>São Paulo</span>
+        <svg class="marquee-chevron" viewBox="0 0 16 16" fill="currentColor"><path d="M0 0L8 6L16 0V6L8 12L0 6V0Z"/></svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== SOBRE ========== -->
+  <section class="sobre" id="sobre">
+    <!--
+      =============================================
+      📸 IMAGEM 2: SOBRE — BACKGROUND FULLSCREEN
+      =============================================
+      Adicione a foto como background-image inline no div abaixo:
+      style="background-image: url('./assets/images/sobre-bg.png'); background-size: cover; background-position: center;"
+
+      Sugestão: Foto do Dr. Samuel no consultório fazendo ajuste
+      quiroprático em paciente, ou foto profissional dele.
+      Dimensão ideal: 1920x1080 (paisagem)
+      O overlay gradiente vai escurecer a esquerda — a foto aparece mais à direita.
+    -->
+    <div class="sobre-bg" style="background-image: url('./assets/images/sobre-bg.png'); background-size: cover; background-position: center;"></div>
+    <div class="sobre-overlay"></div>
+    <div class="container">
+      <div class="sobre-content">
+        <span class="section-tag reveal">Sobre</span>
+        <h2 class="sobre-title reveal reveal-delay-1">
+          Quem é o<br>Dr. Samuel Chagas
+        </h2>
+        <p class="sobre-text reveal reveal-delay-2">
+          Fisioterapeuta e quiropraxista dedicado a tratar o corpo como um todo.
+          Especializado em alinhamento postural, alívio de dores na coluna e
+          recovery para atletas de alta performance.
+        </p>
+        <p class="sobre-text reveal reveal-delay-3">
+          Com uma abordagem moderna e personalizada, cada paciente recebe um
+          protocolo exclusivo pensado para suas necessidades. Atendimento em São Paulo
+          com foco em resultados reais.
+        </p>
+        <div class="sobre-registro reveal reveal-delay-4">
+          Crefito/SP 335633-F
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PARALLAX FIXO — FRASE DE IMPACTO ========== -->
+  <!-- Elipse superior (transição oval do preto para a foto, estilo Odd) -->
+  <div class="ellipse-divider ellipse-divider-top">
+    <div class="ellipse-chevron">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M6 9l6 6 6-6"/>
+      </svg>
+    </div>
+  </div>
+
+  <section class="parallax-section">
+    <!--
+      =============================================
+      📸 IMAGEM 3: PARALLAX FIXO — FRASE DE IMPACTO
+      =============================================
+      Adicione a foto aqui como background-image inline:
+      style="background-image: url('./assets/images/parallax-hero.png');"
+
+      Sugestão de foto: Dr. Samuel fazendo ajuste quiroprático,
+      ou foto dramática de corpo/coluna, ou foto dele em ação.
+      Dimensão ideal: 1920x1200 (paisagem, alta resolução)
+    -->
+    <div class="parallax-section-bg" style="background-image: url('./assets/images/parallax-hero.png');"></div>
+    <div class="parallax-section-overlay"></div>
+    <div class="parallax-section-content">
+      <h2 class="parallax-section-title reveal">
+        Seu corpo não<br>foi feito para<br><em>sentir dor.</em>
+      </h2>
+    </div>
+  </section>
+
+  <!-- Elipse inferior (transição oval da foto de volta pro preto) -->
+  <div class="ellipse-divider ellipse-divider-bottom">
+    <div class="ellipse-chevron">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M6 9l6 6 6-6"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- ========== SERVICOS ========== -->
+  <section class="servicos" id="servicos">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag reveal">Serviços</span>
+        <h2 class="section-title reveal reveal-delay-1">O que tratamos</h2>
+        <p class="section-subtitle reveal reveal-delay-2">
+          Tratamentos especializados para cada necessidade do seu corpo.
+        </p>
+      </div>
+
+      <div class="servicos-grid">
+        <!-- Card 1: Quiropraxia -->
+        <div class="servico-card reveal">
+          <svg class="servico-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M24 4L24 44"/>
+            <path d="M16 12L24 8L32 12"/>
+            <path d="M14 20L24 16L34 20"/>
+            <path d="M16 28L24 24L32 28"/>
+            <path d="M18 36L24 32L30 36"/>
+          </svg>
+          <h3>Quiropraxia</h3>
+          <p>Ajustes vertebrais precisos para restaurar o alinhamento da coluna, melhorar a mobilidade e eliminar dores de forma rápida e eficaz.</p>
+        </div>
+
+        <!-- Card 2: Dor Lombar -->
+        <div class="servico-card reveal reveal-delay-1">
+          <svg class="servico-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="24" cy="24" r="16"/>
+            <path d="M24 16v8"/>
+            <path d="M20 28c2 2 6 2 8 0"/>
+            <circle cx="24" cy="24" r="4" fill="currentColor" opacity="0.2"/>
+          </svg>
+          <h3>Dor Lombar</h3>
+          <p>Protocolo especializado para tratamento de dores lombares, hérnia de disco e problemas posturais que afetam sua qualidade de vida.</p>
+        </div>
+
+        <!-- Card 3: Cifose -->
+        <div class="servico-card reveal reveal-delay-2">
+          <svg class="servico-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M20 8C20 8 16 16 16 24C16 32 24 40 24 40"/>
+            <path d="M28 8C28 8 32 16 32 24C32 32 24 40 24 40"/>
+            <path d="M16 16h16"/>
+            <path d="M14 24h20"/>
+            <path d="M16 32h16"/>
+          </svg>
+          <h3>Cifose</h3>
+          <p>Protocolo exclusivo de alinhamento postural. Alívio da dor, prevenção de futuras complicações e melhora na flexibilidade e mobilidade.</p>
+        </div>
+
+        <!-- Card 4: Recovery -->
+        <div class="servico-card reveal reveal-delay-3">
+          <svg class="servico-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M12 24h24"/>
+            <path d="M24 12v24"/>
+            <circle cx="24" cy="24" r="18"/>
+            <path d="M18 18l12 12"/>
+            <path d="M30 18l-12 12"/>
+          </svg>
+          <h3>Recovery & Performance</h3>
+          <p>Recuperação muscular e preparo para atletas. Manutenção do corpo para quem treina, compete e busca alta performance sem lesões.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== METODO ========== -->
+  <section class="metodo" id="metodo">
+    <!-- Background Pattern -->
+    <div class="metodo-bg-pattern">
+      <svg width="300" height="800" viewBox="0 0 200 800" fill="white">
+        <path d="M0 0L100 60L200 0V80L100 140L0 80V0Z"/>
+        <path d="M0 120L100 180L200 120V200L100 260L0 200V120Z"/>
+        <path d="M0 240L100 300L200 240V320L100 380L0 320V240Z"/>
+        <path d="M0 360L100 420L200 360V440L100 500L0 440V360Z"/>
+        <path d="M0 480L100 540L200 480V560L100 620L0 560V480Z"/>
+        <path d="M0 600L100 660L200 600V680L100 740L0 680V600Z"/>
+      </svg>
+    </div>
+
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag reveal">Método</span>
+        <h2 class="section-title reveal reveal-delay-1">Como funciona</h2>
+      </div>
+
+      <div class="metodo-quote reveal">
+        "Quiropraxia não é luxo,<br><em>é manutenção do motor.</em>"
+      </div>
+
+      <div class="metodo-steps">
+        <div class="metodo-step reveal">
+          <div class="metodo-step-number">01</div>
+          <div>
+            <h3>Avaliação Completa</h3>
+            <p>Análise detalhada da sua postura, mobilidade e histórico de dor. Entendemos o seu corpo para criar um plano de tratamento sob medida.</p>
+          </div>
+        </div>
+        <div class="metodo-step reveal reveal-delay-1">
+          <div class="metodo-step-number">02</div>
+          <div>
+            <h3>Tratamento Personalizado</h3>
+            <p>Protocolo exclusivo combinando quiropraxia, mobilização articular e técnicas de recovery. Cada sessão é pensada para o seu caso.</p>
+          </div>
+        </div>
+        <div class="metodo-step reveal reveal-delay-2">
+          <div class="metodo-step-number">03</div>
+          <div>
+            <h3>Acompanhamento Contínuo</h3>
+            <p>Manutenção regular para manter seu corpo alinhado e prevenir novas dores. Alta performance começa com um corpo alinhado.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== RESULTADOS ========== -->
+  <section class="resultados" id="resultados">
+    <div class="container">
+      <span class="section-tag reveal" style="text-align:center;display:block;">Resultados</span>
+      <h2 class="resultados-title reveal reveal-delay-1">
+        Quem já confia<br>no Dr. Samuel
+      </h2>
+
+
+      <!-- Contadores -->
+      <div class="contadores reveal">
+        <div class="contador">
+          <span class="contador-number" data-target="1000">0</span>
+          <span class="contador-label">Atendimentos</span>
+        </div>
+        <div class="contador">
+          <span class="contador-number" data-target="5">0</span>
+          <span class="contador-label">Anos de Experiência</span>
+        </div>
+        <div class="contador">
+          <span class="contador-number" data-target="98">0</span>
+          <span class="contador-label">% Satisfação</span>
+        </div>
+      </div>
+
+      <!-- Depoimentos -->
+      <div class="depoimentos-grid">
+        <div class="depoimento-card reveal">
+          <div class="depoimento-stars">★★★★★</div>
+          <p class="depoimento-text">
+            "Tinha dores na lombar há anos. Depois de poucas sessões com o Dr. Samuel, a diferença foi absurda. Recomendo demais."
+          </p>
+          <div class="depoimento-author">
+            <div class="depoimento-avatar">foto</div>
+            <div>
+              <div class="depoimento-name">Nome do Paciente</div>
+              <div class="depoimento-role">Atleta</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="depoimento-card reveal reveal-delay-1">
+          <div class="depoimento-stars">★★★★★</div>
+          <p class="depoimento-text">
+            "O tratamento de cifose mudou minha postura e minha autoestima. Profissional incrível, atencioso e muito competente."
+          </p>
+          <div class="depoimento-author">
+            <div class="depoimento-avatar">foto</div>
+            <div>
+              <div class="depoimento-name">Nome do Paciente</div>
+              <div class="depoimento-role">Empresária</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="depoimento-card reveal reveal-delay-2">
+          <div class="depoimento-stars">★★★★★</div>
+          <p class="depoimento-text">
+            "Recovery depois dos treinos virou rotina. O Dr. Samuel entende o corpo do atleta como ninguém. Meu rendimento melhorou muito."
+          </p>
+          <div class="depoimento-author">
+            <div class="depoimento-avatar">foto</div>
+            <div>
+              <div class="depoimento-name">Nome do Paciente</div>
+              <div class="depoimento-role">Personal Trainer</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PARA QUEM ========== -->
+  <section class="para-quem">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag reveal">Para quem é</span>
+        <h2 class="section-title reveal reveal-delay-1">Feito para você</h2>
+        <p class="section-subtitle reveal reveal-delay-2">
+          Não importa o seu perfil — se tem dor ou busca performance, o tratamento é para você.
+        </p>
+      </div>
+
+      <div class="para-quem-grid">
+        <div class="para-quem-card reveal">
+          <div class="para-quem-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M14.5 3.5C14.5 3.5 14.5 5.5 12 8C9.5 5.5 9.5 3.5 9.5 3.5"/>
+              <circle cx="12" cy="3" r="2.5"/>
+              <path d="M4 21l4-8 4 4 4-4 4 8"/>
+            </svg>
+          </div>
+          <h3>Atletas</h3>
+          <p>Recovery, prevenção de lesões e otimização de performance esportiva.</p>
+        </div>
+
+        <div class="para-quem-card reveal reveal-delay-1">
+          <div class="para-quem-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+            </svg>
+          </div>
+          <h3>Dores Crônicas</h3>
+          <p>Tratamento especializado para dores persistentes na coluna, lombar e cervical.</p>
+        </div>
+
+        <div class="para-quem-card reveal reveal-delay-2">
+          <div class="para-quem-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="3" y="4" width="18" height="14" rx="2"/>
+              <path d="M7 22h10"/>
+              <path d="M12 18v4"/>
+            </svg>
+          </div>
+          <h3>Sedentários</h3>
+          <p>Para quem trabalha sentado e sofre com postura, tensão e desconforto diário.</p>
+        </div>
+
+        <div class="para-quem-card reveal reveal-delay-3">
+          <div class="para-quem-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              <path d="M9 12l2 2 4-4"/>
+            </svg>
+          </div>
+          <h3>Prevenção</h3>
+          <p>Manutenção regular do corpo para prevenir dores e manter qualidade de vida.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== VÍDEOS INSTAGRAM ========== -->
+  <section class="videos-section" id="videos">
+    <div class="container">
+      <span class="section-tag reveal" style="text-align:center;display:block;">Conteúdo</span>
+      <h2 class="section-title reveal reveal-delay-1" style="text-align:center;">Veja um pouco mais</h2>
+      <p class="section-subtitle reveal reveal-delay-2" style="text-align:center;">
+        Acompanhe o trabalho do Dr. Samuel nas redes sociais.
+      </p>
+
+      <div class="videos-grid">
+        <div class="video-card reveal">
+          <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/DJ_z-YKussT/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style="background:#000; border:0; border-radius:12px; box-shadow:none; margin:0; max-width:100%; min-width:0; padding:0; width:100%;"><div style="padding:16px;"><a href="https://www.instagram.com/reel/DJ_z-YKussT/?utm_source=ig_embed&amp;utm_campaign=loading" style="background:#000; line-height:0; padding:0; text-align:center; text-decoration:none; width:100%;" target="_blank"><div style="padding: 19% 0;"></div><div style="display:block; height:50px; margin:0 auto 12px; width:50px;"><svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-511.000000, -20.000000)" fill="#FFFFFF"><g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></g></svg></div><div style="padding-top:8px;"><div style="color:#aaa; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">Ver no Instagram</div></div></a></div></blockquote>
+        </div>
+
+        <div class="video-card reveal reveal-delay-1">
+          <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/C7U8ghkP1N-/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style="background:#000; border:0; border-radius:12px; box-shadow:none; margin:0; max-width:100%; min-width:0; padding:0; width:100%;"><div style="padding:16px;"><a href="https://www.instagram.com/reel/C7U8ghkP1N-/?utm_source=ig_embed&amp;utm_campaign=loading" style="background:#000; line-height:0; padding:0; text-align:center; text-decoration:none; width:100%;" target="_blank"><div style="padding: 19% 0;"></div><div style="display:block; height:50px; margin:0 auto 12px; width:50px;"><svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-511.000000, -20.000000)" fill="#FFFFFF"><g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></g></svg></div><div style="padding-top:8px;"><div style="color:#aaa; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">Ver no Instagram</div></div></a></div></blockquote>
+        </div>
+
+        <div class="video-card reveal reveal-delay-2">
+          <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/DVLpLXajpuU/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style="background:#000; border:0; border-radius:12px; box-shadow:none; margin:0; max-width:100%; min-width:0; padding:0; width:100%;"><div style="padding:16px;"><a href="https://www.instagram.com/reel/DVLpLXajpuU/?utm_source=ig_embed&amp;utm_campaign=loading" style="background:#000; line-height:0; padding:0; text-align:center; text-decoration:none; width:100%;" target="_blank"><div style="padding: 19% 0;"></div><div style="display:block; height:50px; margin:0 auto 12px; width:50px;"><svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-511.000000, -20.000000)" fill="#FFFFFF"><g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></g></svg></div><div style="padding-top:8px;"><div style="color:#aaa; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">Ver no Instagram</div></div></a></div></blockquote>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script async src="//www.instagram.com/embed.js"></script>
+
+  <!-- ========== CTA FINAL ========== -->
+  <section class="cta-final" id="contato">
+    <!-- Background Chevrons -->
+    <div class="cta-final-bg">
+      <svg width="300" height="600" viewBox="0 0 200 600" fill="white">
+        <path d="M0 0L100 60L200 0V80L100 140L0 80V0Z"/>
+        <path d="M0 120L100 180L200 120V200L100 260L0 200V120Z"/>
+        <path d="M0 240L100 300L200 240V320L100 380L0 320V240Z"/>
+        <path d="M0 360L100 420L200 360V440L100 500L0 440V360Z"/>
+        <path d="M0 480L100 540L200 480V560L100 620L0 560V480Z"/>
+      </svg>
+    </div>
+
+    <div class="container">
+      <span class="section-tag reveal" style="display:block;text-align:center;">Agendamento</span>
+      <h2 class="cta-final-title reveal reveal-delay-1">
+        Chega de<br>sentir dor.
+      </h2>
+      <p class="cta-final-sub reveal reveal-delay-2">
+        Agende sua avaliação e comece a tratar seu corpo como ele merece.
+      </p>
+      <a href="https://wa.me/5511999999999?text=Ol%C3%A1%20Dr.%20Samuel!%20Gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o."
+         target="_blank" class="cta-final-btn reveal reveal-delay-3">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        Agendar Avaliação
+      </a>
+      <p class="cta-final-location reveal reveal-delay-4">
+        📍 São Paulo, SP
+      </p>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-brand">Dr. Samuel Chagas</div>
+      <div class="footer-links">
+        <a href="https://www.instagram.com/dr.samuelchagas/" target="_blank">Instagram</a>
+        <a href="https://wa.me/5511999999999" target="_blank">WhatsApp</a>
+      </div>
+      <div class="footer-copy">
+        Crefito/SP 335633-F · &copy; 2025 Todos os direitos reservados.
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========== WHATSAPP FLUTUANTE ========== -->
+  <a href="https://wa.me/5511999999999?text=Ol%C3%A1%20Dr.%20Samuel!%20Gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o."
+     target="_blank" class="whatsapp-float" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+  </a>
+
+  <!-- ========== JAVASCRIPT ========== -->
+  <script>
+    // Navbar scroll effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 80) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // Mobile menu
+    function toggleMobileMenu() {
+      document.getElementById('mobileMenu').classList.toggle('active');
+      document.body.style.overflow = document.getElementById('mobileMenu').classList.contains('active') ? 'hidden' : '';
+    }
+
+    // Scroll reveal with Intersection Observer
+    const revealElements = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    // Force hero elements visible on load (they're already in viewport)
+    window.addEventListener('load', () => {
+      document.querySelectorAll('.hero .reveal').forEach((el, i) => {
+        setTimeout(() => el.classList.add('visible'), i * 150);
+      });
+    });
+
+    // Counter animation
+    const counters = document.querySelectorAll('.contador-number');
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const target = parseInt(entry.target.dataset.target);
+          let current = 0;
+          const increment = target / 60;
+          const timer = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+              entry.target.textContent = target >= 100 ? '+' + target.toLocaleString() : target + (target === 98 ? '%' : '+');
+              clearInterval(timer);
+            } else {
+              entry.target.textContent = Math.floor(current);
+            }
+          }, 25);
+          counterObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    counters.forEach(c => counterObserver.observe(c));
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
