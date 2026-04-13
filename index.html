@@ -12,6 +12,7 @@
   <style>
     /* ========== RESET & BASE ========== */
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { overflow-x: hidden; }
 
     :root {
       --black: #0A0A0A;
@@ -228,6 +229,7 @@
     .hero-bg {
       position: absolute;
       inset: 0;
+      background-image: url('./assets/images/hero-bg.png');
       background-size: cover;
       background-position: center;
       z-index: 1;
@@ -432,8 +434,9 @@
     .sobre-bg {
       position: absolute;
       inset: 0;
-      background: var(--dark-2);
-      /* PLACEHOLDER: substituir por imagem real */
+      background-image: url('./assets/images/sobre-bg.png');
+      background-size: cover;
+      background-position: center;
       z-index: 1;
     }
 
@@ -1186,13 +1189,12 @@
     .parallax-section-bg {
       position: absolute;
       inset: 0;
+      background-image: url('./assets/images/parallax-hero.png');
       background-attachment: fixed;
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
       z-index: 1;
-      /* Placeholder bg */
-      background-color: var(--dark-3);
     }
 
     /* Placeholder indicator for the parallax image */
@@ -1429,7 +1431,7 @@
       Dimensão ideal: 1920x1080 (paisagem, alta resolução)
       A foto vai ter um overlay escuro por cima, então pode ser clara.
     -->
-    <div class="hero-bg" style="background-image: url('./assets/images/hero-bg.png');"></div>
+    <div class="hero-bg"></div>
 
     <!-- Decorative Chevrons -->
     <div class="hero-chevrons">
@@ -1518,7 +1520,7 @@
       Dimensão ideal: 1920x1080 (paisagem)
       O overlay gradiente vai escurecer a esquerda — a foto aparece mais à direita.
     -->
-    <div class="sobre-bg" style="background-image: url('./assets/images/sobre-bg.png'); background-size: cover; background-position: center;"></div>
+    <div class="sobre-bg"></div>
     <div class="sobre-overlay"></div>
     <div class="container">
       <div class="sobre-content">
@@ -1561,7 +1563,7 @@
       ou foto dramática de corpo/coluna, ou foto dele em ação.
       Dimensão ideal: 1920x1200 (paisagem, alta resolução)
     -->
-    <div class="parallax-section-bg" style="background-image: url('./assets/images/parallax-hero.png');"></div>
+    <div class="parallax-section-bg"></div>
     <div class="parallax-section-overlay"></div>
     <div class="parallax-section-content">
       <h2 class="parallax-section-title reveal">
