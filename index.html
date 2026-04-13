@@ -479,6 +479,24 @@
       display: block;
     }
 
+    .servicos .section-tag,
+    .resultados .section-tag,
+    .videos-section .section-tag {
+      color: var(--gray);
+    }
+
+    .servicos .section-title,
+    .resultados .section-title,
+    .videos-section .section-title {
+      color: var(--black);
+    }
+
+    .servicos .section-subtitle,
+    .resultados .section-subtitle,
+    .videos-section .section-subtitle {
+      color: var(--gray);
+    }
+
     .sobre-title {
       font-family: var(--font-primary);
       font-size: clamp(2rem, 5vw, 3.5rem);
@@ -511,7 +529,8 @@
     /* ========== SECTION: SERVICOS ========== */
     .servicos {
       padding: 120px 0;
-      background: var(--black);
+      background: var(--white);
+      color: var(--black);
     }
 
     .section-header {
@@ -530,7 +549,7 @@
 
     .section-subtitle {
       font-size: 1rem;
-      color: var(--gray-light);
+      color: var(--gray);
       max-width: 500px;
       margin: 0 auto;
     }
@@ -542,8 +561,8 @@
     }
 
     .servico-card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.1);
+      background: var(--white-soft);
+      border: 1px solid rgba(0,0,0,0.08);
       border-radius: 16px;
       padding: 48px 36px;
       transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -558,15 +577,15 @@
       left: 0;
       right: 0;
       height: 2px;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+      background: linear-gradient(90deg, transparent, rgba(0,0,0,0.1), transparent);
       opacity: 0;
       transition: opacity 0.4s;
     }
 
     .servico-card:hover {
       transform: translateY(-4px);
-      border-color: rgba(255,255,255,0.12);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+      border-color: rgba(0,0,0,0.12);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.08);
     }
 
     .servico-card:hover::before { opacity: 1; }
@@ -575,8 +594,8 @@
       width: 48px;
       height: 48px;
       margin-bottom: 24px;
-      color: var(--white);
-      opacity: 0.8;
+      color: var(--black);
+      opacity: 0.7;
     }
 
     .servico-card h3 {
@@ -589,7 +608,7 @@
     }
 
     .servico-card p {
-      color: var(--gray-light);
+      color: var(--gray);
       font-size: 0.9rem;
       line-height: 1.7;
     }
@@ -603,7 +622,7 @@
       letter-spacing: 1px;
       margin-bottom: 32px;
       text-align: center;
-      color: var(--white);
+      color: var(--black);
     }
 
     .patologias-grid {
@@ -613,20 +632,20 @@
     }
 
     .patologia-item {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
+      background: var(--white-soft);
+      border: 1px solid rgba(0,0,0,0.08);
       border-radius: 12px;
       padding: 16px 20px;
       font-size: 0.95rem;
-      color: var(--white-soft);
+      color: var(--dark);
       font-weight: 500;
       transition: all 0.3s ease;
       text-align: center;
     }
 
     .patologia-item:hover {
-      background: rgba(255,255,255,0.1);
-      border-color: rgba(255,255,255,0.15);
+      background: #eee;
+      border-color: rgba(0,0,0,0.15);
       transform: translateY(-2px);
     }
 
@@ -741,7 +760,8 @@
     /* ========== SECTION: RESULTADOS / PROVA SOCIAL ========== */
     .resultados {
       padding: 120px 0;
-      background: var(--black);
+      background: var(--white);
+      color: var(--black);
       overflow: hidden;
     }
 
@@ -784,6 +804,7 @@
       color: var(--gray);
       letter-spacing: 2px;
       text-transform: uppercase;
+      color: var(--dark-3);
     }
 
     /* Depoimentos */
@@ -794,14 +815,14 @@
     }
 
     .depoimento-card {
-      background: var(--dark-2);
-      border: 1px solid rgba(255,255,255,0.06);
+      background: var(--white-soft);
+      border: 1px solid rgba(0,0,0,0.08);
       border-radius: 16px;
       padding: 36px;
     }
 
     .depoimento-stars {
-      color: var(--white);
+      color: #f5a623;
       margin-bottom: 16px;
       font-size: 0.9rem;
       letter-spacing: 2px;
@@ -809,7 +830,7 @@
 
     .depoimento-text {
       font-size: 0.95rem;
-      color: var(--gray-light);
+      color: var(--gray);
       line-height: 1.7;
       margin-bottom: 24px;
       font-style: italic;
@@ -825,7 +846,7 @@
       width: 40px;
       height: 40px;
       border-radius: 50%;
-      background: var(--dark-3);
+      background: #e0e0e0;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -840,7 +861,7 @@
 
     .depoimento-role {
       font-size: 0.75rem;
-      color: var(--gray);
+      color: var(--dark-3);
     }
 
     /* ========== SECTION: PARA QUEM ========== */
@@ -904,7 +925,8 @@
     /* ========== SECTION: VÍDEOS INSTAGRAM ========== */
     .videos-section {
       padding: 120px 0;
-      background: var(--black);
+      background: var(--white-soft);
+      color: var(--black);
     }
 
     .videos-grid {
@@ -917,7 +939,8 @@
     .video-card {
       border-radius: 12px;
       overflow: hidden;
-      background: var(--dark-2);
+      background: var(--white);
+      border: 1px solid rgba(0,0,0,0.08);
     }
 
     .video-card .instagram-media {
