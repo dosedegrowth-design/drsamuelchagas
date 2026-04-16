@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dr. Samuel Chagas | Quiropraxia em São Paulo</title>
-  <meta name="description" content="Quiropraxia e Fisioterapia em São Paulo. Tratando o corpo como um todo, ajudando quem tem dor. Agende sua avaliação.">
+  <title>Dr. Samuel Chagas | Fisioterapia em São Paulo</title>
+  <meta name="description" content="Fisioterapia especializada em São Paulo. Tratando o corpo como um todo, ajudando quem tem dor. Agende sua avaliação.">
   <meta name="theme-color" content="#0A0A0A">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -229,7 +229,7 @@
     .hero-bg {
       position: absolute;
       inset: 0;
-      background-image: url('./assets/images/hero-bg.png');
+      background-image: url('./assets/images/hero-bg.jpg');
       background-size: cover;
       background-position: center;
       z-index: 1;
@@ -434,7 +434,7 @@
     .sobre-bg {
       position: absolute;
       inset: 0;
-      background-image: url('./assets/images/sobre-bg.png');
+      background-image: url('./assets/images/sobre-bg.jpg');
       background-size: cover;
       background-position: center;
       z-index: 1;
@@ -495,6 +495,50 @@
     .resultados .section-subtitle,
     .videos-section .section-subtitle {
       color: var(--gray);
+    }
+
+    .sobre-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 60px;
+    }
+
+    .sobre-wrapper .sobre-content {
+      flex: 1;
+    }
+
+    .sobre-photo {
+      flex: 0 0 320px;
+    }
+
+    .sobre-photo-placeholder {
+      width: 320px;
+      height: 420px;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 2px solid rgba(255,255,255,0.1);
+    }
+
+    .sobre-photo-placeholder img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    @media (max-width: 1024px) {
+      .sobre-wrapper {
+        flex-direction: column;
+        gap: 40px;
+      }
+      .sobre-photo {
+        flex: none;
+        width: 100%;
+        max-width: 300px;
+      }
+      .sobre-photo-placeholder {
+        width: 100%;
+        height: 380px;
+      }
     }
 
     .sobre-title {
@@ -1198,6 +1242,11 @@
         background-size: cover !important;
         background-position: center !important;
       }
+
+      .hero-bg,
+      .sobre-bg {
+        background-attachment: scroll !important;
+      }
     }
 
     /* ========== SECTION: PARALLAX FIXO (estilo Odd neve) ========== */
@@ -1214,7 +1263,7 @@
     .parallax-section-bg {
       position: absolute;
       inset: 0;
-      background-image: url('./assets/images/parallax-hero.png');
+      background-image: url('./assets/images/parallax-hero.jpg');
       background-attachment: fixed;
       background-size: cover;
       background-position: center;
@@ -1412,7 +1461,7 @@
         <img src="./assets/images/logo01.png" alt="Logo Dr. Samuel Chagas">
         <div>
           Dr. Samuel Chagas
-          <span>Quiropraxia</span>
+          <span>Fisioterapia</span>
         </div>
       </a>
       <ul class="nav-links">
@@ -1449,7 +1498,7 @@
       📸 IMAGEM 1: HERO BACKGROUND
       =============================================
       Adicione a foto como background-image inline no div abaixo:
-      style="background-image: url('./assets/images/hero-bg.png');"
+      style="background-image: url('./assets/images/hero-bg.jpg');"
 
       Sugestão: Foto do Dr. Samuel de corpo inteiro, em pé,
       fundo escuro ou no consultório. Transmitir confiança.
@@ -1470,12 +1519,12 @@
     </div>
 
     <div class="hero-content">
-      <div class="hero-tag reveal">Fisioterapeuta & Quiropraxia</div>
+      <div class="hero-tag reveal">Fisioterapeuta</div>
       <h1 class="hero-title reveal reveal-delay-1">
         Tratando o corpo<br><em>como um todo.</em>
       </h1>
       <p class="hero-subtitle reveal reveal-delay-2">
-        Quiropraxia e fisioterapia especializada em São Paulo.
+        Fisioterapia especializada em São Paulo.
         Alívio da dor, performance e qualidade de vida.
       </p>
       <a href="https://wa.me/5511999999999?text=Ol%C3%A1%20Dr.%20Samuel!%20Gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o."
@@ -1497,7 +1546,7 @@
   <div class="marquee">
     <div class="marquee-track">
       <div class="marquee-content">
-        <span>Quiropraxia</span>
+        <span>Ajuste Postural</span>
         <svg class="marquee-chevron" viewBox="0 0 16 16" fill="currentColor"><path d="M0 0L8 6L16 0V6L8 12L0 6V0Z"/></svg>
         <span>Fisioterapia</span>
         <svg class="marquee-chevron" viewBox="0 0 16 16" fill="currentColor"><path d="M0 0L8 6L16 0V6L8 12L0 6V0Z"/></svg>
@@ -1513,7 +1562,7 @@
         <svg class="marquee-chevron" viewBox="0 0 16 16" fill="currentColor"><path d="M0 0L8 6L16 0V6L8 12L0 6V0Z"/></svg>
       </div>
       <div class="marquee-content">
-        <span>Quiropraxia</span>
+        <span>Ajuste Postural</span>
         <svg class="marquee-chevron" viewBox="0 0 16 16" fill="currentColor"><path d="M0 0L8 6L16 0V6L8 12L0 6V0Z"/></svg>
         <span>Fisioterapia</span>
         <svg class="marquee-chevron" viewBox="0 0 16 16" fill="currentColor"><path d="M0 0L8 6L16 0V6L8 12L0 6V0Z"/></svg>
@@ -1538,7 +1587,7 @@
       📸 IMAGEM 2: SOBRE — BACKGROUND FULLSCREEN
       =============================================
       Adicione a foto como background-image inline no div abaixo:
-      style="background-image: url('./assets/images/sobre-bg.png'); background-size: cover; background-position: center;"
+      style="background-image: url('./assets/images/sobre-bg.jpg'); background-size: cover; background-position: center;"
 
       Sugestão: Foto do Dr. Samuel no consultório fazendo ajuste
       quiroprático em paciente, ou foto profissional dele.
@@ -1548,19 +1597,27 @@
     <div class="sobre-bg"></div>
     <div class="sobre-overlay"></div>
     <div class="container">
-      <div class="sobre-content">
-        <span class="section-tag reveal">Sobre</span>
-        <h2 class="sobre-title reveal reveal-delay-1">
-          Quem é o<br>Dr. Samuel Chagas
-        </h2>
-        <p class="sobre-text reveal reveal-delay-2">
-          Fisioterapeuta com atuação em quiropraxia dedicado a tratar o corpo como um todo. Especializado em ajustes posturais, alívio de dores na coluna e recovery para atletas de alta performance.
-        </p>
-        <p class="sobre-text reveal reveal-delay-3">
-          Com uma abordagem moderna e personalizada, cada paciente recebe um protocolo exclusivo pensado para suas necessidades. Atendimento em São Paulo com foco em resultados reais.
-        </p>
-        <div class="sobre-registro reveal reveal-delay-4">
-          Crefito/SP 335633-F
+      <div class="sobre-wrapper">
+        <div class="sobre-content">
+          <span class="section-tag reveal">Sobre</span>
+          <h2 class="sobre-title reveal reveal-delay-1">
+            Quem é o<br>Dr. Samuel Chagas
+          </h2>
+          <p class="sobre-text reveal reveal-delay-2">
+            Fisioterapeuta com atuação em quiropraxia dedicado a tratar o corpo como um todo. Especializado em ajustes posturais, recovery para atletas, alívio de dores musculoesqueléticas e dores na coluna vertebral.
+          </p>
+          <p class="sobre-text reveal reveal-delay-3">
+            Com uma abordagem moderna e personalizada, cada paciente recebe um protocolo exclusivo pensado para suas necessidades. Atendimento em São Paulo com foco em resultados reais.
+          </p>
+          <div class="sobre-registro reveal reveal-delay-4">
+            Crefito/SP 335633-F
+          </div>
+        </div>
+        <div class="sobre-photo reveal reveal-delay-2">
+          <!-- Foto profissional do Dr. Samuel -->
+          <div class="sobre-photo-placeholder">
+            <img src="./assets/images/dr-samuel-profile.png" alt="Dr. Samuel Chagas" onerror="this.style.display='none'">
+          </div>
         </div>
       </div>
     </div>
@@ -1582,7 +1639,7 @@
       📸 IMAGEM 3: PARALLAX FIXO — FRASE DE IMPACTO
       =============================================
       Adicione a foto aqui como background-image inline:
-      style="background-image: url('./assets/images/parallax-hero.png');"
+      style="background-image: url('./assets/images/parallax-hero.jpg');"
 
       Sugestão de foto: Dr. Samuel fazendo ajuste quiroprático,
       ou foto dramática de corpo/coluna, ou foto dele em ação.
@@ -1617,36 +1674,7 @@
         </p>
       </div>
 
-      <div class="servicos-grid">
-        <!-- Card 1: Quiropraxia -->
-        <div class="servico-card reveal">
-          <svg class="servico-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M24 4L24 44"/>
-            <path d="M16 12L24 8L32 12"/>
-            <path d="M14 20L24 16L34 20"/>
-            <path d="M16 28L24 24L32 28"/>
-            <path d="M18 36L24 32L30 36"/>
-          </svg>
-          <h3>Quiropraxia</h3>
-          <p>Ajustes vertebrais precisos para restaurar o alinhamento da coluna, melhorar a mobilidade e eliminar dores de forma rápida e eficaz.</p>
-        </div>
-
-        <!-- Card 2: Recovery -->
-        <div class="servico-card reveal reveal-delay-1">
-          <svg class="servico-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M12 24h24"/>
-            <path d="M24 12v24"/>
-            <circle cx="24" cy="24" r="18"/>
-            <path d="M18 18l12 12"/>
-            <path d="M30 18l-12 12"/>
-          </svg>
-          <h3>Recovery & Performance</h3>
-          <p>Recuperação muscular e preparo para atletas. Manutenção do corpo para quem treina, compete e busca alta performance sem lesões.</p>
-        </div>
-      </div>
-
-      <!-- Patologias tratadas -->
-      <div class="patologias reveal" style="margin-top: 64px;">
+      <div class="patologias reveal">
         <h3 class="patologias-title">Patologias que tratamos</h3>
         <div class="patologias-grid">
           <div class="patologia-item">Dor lombar (lombalgia)</div>
