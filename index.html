@@ -1275,6 +1275,19 @@
       z-index: 1;
     }
 
+    /* iOS/iPad/touch devices don't support background-attachment:fixed */
+    @supports (-webkit-touch-callout: none) {
+      .parallax-section-bg {
+        background-attachment: scroll !important;
+      }
+    }
+
+    @media (hover: none) {
+      .parallax-section-bg {
+        background-attachment: scroll !important;
+      }
+    }
+
     /* Placeholder indicator for the parallax image */
     .parallax-section-bg::after {
       content: attr(data-placeholder);
