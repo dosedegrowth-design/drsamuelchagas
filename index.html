@@ -434,32 +434,26 @@
     .sobre-bg {
       position: absolute;
       inset: 0;
-      background-image: url('./assets/images/sobre-bg.jpg');
-      background-size: cover;
-      background-position: center;
+      background: var(--black);
       z-index: 1;
     }
 
-    .sobre-bg::before {
-      content: 'INSERIR FOTO — Dr. Samuel no consultório / fazendo ajuste (fullscreen)';
+    .sobre-chevrons {
       position: absolute;
+      right: -50px;
       top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      color: rgba(255,255,255,0.06);
-      font-size: 1rem;
-      font-family: var(--font-primary);
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      white-space: nowrap;
-      z-index: 0;
+      transform: translateY(-50%);
+      z-index: 1;
+      opacity: 0.04;
+    }
+
+    .sobre-chevrons svg {
+      width: 500px;
+      height: auto;
     }
 
     .sobre-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to right, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.7) 50%, rgba(10,10,10,0.4) 100%);
-      z-index: 2;
+      display: none;
     }
 
     .sobre-content {
@@ -1236,10 +1230,6 @@
         background-image: url('./assets/images/hero-bg-mobile.jpg') !important;
       }
 
-      .sobre-bg {
-        background-image: url('./assets/images/sobre-bg-mobile.jpg') !important;
-      }
-
       .parallax-section-bg {
         background-image: url('./assets/images/parallax-hero-mobile.jpg') !important;
         background-attachment: scroll !important;
@@ -1267,7 +1257,7 @@
     .parallax-section-bg {
       position: absolute;
       inset: 0;
-      background-image: url('./assets/images/parallax-hero.jpg');
+      background-image: url('./assets/images/sobre-bg.jpg');
       background-attachment: fixed;
       background-size: cover;
       background-position: center;
@@ -1612,7 +1602,15 @@
       O overlay gradiente vai escurecer a esquerda — a foto aparece mais à direita.
     -->
     <div class="sobre-bg"></div>
-    <div class="sobre-overlay"></div>
+    <div class="sobre-chevrons">
+      <svg viewBox="0 0 200 600" fill="white">
+        <path d="M0 0L100 60L200 0V80L100 140L0 80V0Z"/>
+        <path d="M0 120L100 180L200 120V200L100 260L0 200V120Z"/>
+        <path d="M0 240L100 300L200 240V320L100 380L0 320V240Z"/>
+        <path d="M0 360L100 420L200 360V440L100 500L0 440V360Z"/>
+        <path d="M0 480L100 540L200 480V560L100 620L0 560V480Z"/>
+      </svg>
+    </div>
     <div class="container">
       <div class="sobre-wrapper">
         <div class="sobre-content">
@@ -1703,7 +1701,7 @@
           <div class="patologia-item">Enxaqueca</div>
           <div class="patologia-item">Insônia</div>
           <div class="patologia-item">Inflamação no nervo ciático</div>
-          <div class="patologia-item">Dores em membros (joelho, tornozelo, cotovelo, punho)</div>
+          <div class="patologia-item">Dores articulares (ombro, joelho, tornozelo, cotovelo e punho)</div>
           <div class="patologia-item">Tendinite</div>
           <div class="patologia-item">Bursite</div>
           <div class="patologia-item">Epicondilite</div>
