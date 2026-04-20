@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://drsamuelchagas.com.br/sitemap.xml
