@@ -771,21 +771,169 @@
     }
 
     .patologia-item {
+      position: relative;
       background: var(--white-soft);
       border: 1px solid rgba(0,0,0,0.08);
       border-radius: 12px;
-      padding: 16px 20px;
+      padding: 16px 44px 16px 20px;
       font-size: 0.95rem;
       color: var(--dark);
       font-weight: 500;
       transition: all 0.3s ease;
       text-align: center;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .patologia-item::after {
+      content: "+";
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 22px;
+      height: 22px;
+      line-height: 20px;
+      text-align: center;
+      border-radius: 50%;
+      background: var(--black);
+      color: var(--white);
+      font-size: 1rem;
+      font-weight: 400;
+      transition: all 0.3s ease;
     }
 
     .patologia-item:hover {
       background: #eee;
       border-color: rgba(0,0,0,0.15);
       transform: translateY(-2px);
+    }
+
+    .patologia-item:hover::after {
+      transform: translateY(-50%) rotate(90deg);
+    }
+
+    .patologia-item:focus-visible {
+      outline: 2px solid var(--black);
+      outline-offset: 2px;
+    }
+
+    /* ========== MODAL PATOLOGIA ========== */
+    .pat-modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: rgba(10,10,10,0.7);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .pat-modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .pat-modal {
+      position: relative;
+      background: var(--white);
+      color: var(--black);
+      border-radius: 20px;
+      max-width: 560px;
+      width: 100%;
+      max-height: 88vh;
+      overflow-y: auto;
+      padding: 40px 36px 32px;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.4);
+      transform: translateY(24px) scale(0.98);
+      transition: transform 0.3s ease;
+    }
+
+    .pat-modal-overlay.active .pat-modal {
+      transform: translateY(0) scale(1);
+    }
+
+    .pat-modal-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 40px;
+      height: 40px;
+      border: none;
+      border-radius: 50%;
+      background: var(--white-soft);
+      color: var(--black);
+      font-size: 1.5rem;
+      line-height: 1;
+      cursor: pointer;
+      transition: background 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .pat-modal-close:hover { background: #e6e6e6; }
+
+    .pat-modal-tag {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--gray);
+      margin-bottom: 12px;
+    }
+
+    .pat-modal-title {
+      font-family: var(--font-primary);
+      font-size: 1.6rem;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 18px;
+      color: var(--black);
+      padding-right: 32px;
+    }
+
+    .pat-modal-body p {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: #333;
+      margin-bottom: 16px;
+    }
+
+    .pat-modal-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 8px;
+      background: #25D366;
+      color: #fff;
+      font-family: var(--font-primary);
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      padding: 14px 26px;
+      border-radius: 50px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .pat-modal-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(37,211,102,0.35);
+    }
+
+    .pat-modal-cta svg { width: 20px; height: 20px; fill: #fff; }
+
+    @media (max-width: 768px) {
+      .pat-modal { padding: 36px 22px 26px; border-radius: 16px; }
+      .pat-modal-title { font-size: 1.35rem; }
     }
 
     @media (max-width: 1024px) {
@@ -1789,21 +1937,21 @@
       <div class="patologias reveal">
         <h3 class="patologias-title">Patologias que tratamos</h3>
         <div class="patologias-grid">
-          <div class="patologia-item">Dor lombar (lombalgia)</div>
-          <div class="patologia-item">Dor torácica (dorsalgia)</div>
-          <div class="patologia-item">Dor no pescoço (cervicalgia)</div>
-          <div class="patologia-item">Hérnia de disco</div>
-          <div class="patologia-item">Escoliose</div>
-          <div class="patologia-item">Bico de papagaio</div>
-          <div class="patologia-item">Enxaqueca</div>
-          <div class="patologia-item">Insônia</div>
-          <div class="patologia-item">Inflamação no nervo ciático</div>
-          <div class="patologia-item">Dores articulares (ombro, joelho, tornozelo, cotovelo e punho)</div>
-          <div class="patologia-item">Tendinite</div>
-          <div class="patologia-item">Bursite</div>
-          <div class="patologia-item">Epicondilite</div>
-          <div class="patologia-item">Hipercifose torácica</div>
-          <div class="patologia-item">Hiperlordose lombar</div>
+          <div class="patologia-item" role="button" tabindex="0" data-pat="lombalgia">Dor lombar (lombalgia)</div>
+          <div class="patologia-item" role="button" tabindex="0" data-pat="dorsalgia">Dor torácica (dorsalgia)</div>
+          <div class="patologia-item" role="button" tabindex="0" data-pat="cervicalgia">Dor no pescoço (cervicalgia)</div>
+          <div class="patologia-item" role="button" tabindex="0" data-pat="hernia-de-disco">Hérnia de disco</div>
+          <div class="patologia-item" role="button" tabindex="0" data-pat="escoliose">Escoliose</div>
+          <div class="patologia-item" role="button" tabindex="0" data-pat="bico-de-papagaio">Bico de papagaio</div>
+          <div class="patologia-item" role="button" tabindex="0" data-pat="enxaqueca">Enxaqueca</div>
+          <div class="patologia-item" role="button" tabindex="0" data-pat="insonia">Insônia</div>
+          <div class="patologia-item" role="button" tabindex="0" data-pat="ciatico">Inflamação no nervo ciático</div>
+          <div class="patologia-item" role="button" tabindex="0" data-pat="dores-articulares">Dores articulares (ombro, joelho, tornozelo, cotovelo e punho)</div>
+          <div class="patologia-item" role="button" tabindex="0" data-pat="tendinite">Tendinite</div>
+          <div class="patologia-item" role="button" tabindex="0" data-pat="bursite">Bursite</div>
+          <div class="patologia-item" role="button" tabindex="0" data-pat="epicondilite">Epicondilite</div>
+          <div class="patologia-item" role="button" tabindex="0" data-pat="hipercifose">Hipercifose torácica</div>
+          <div class="patologia-item" role="button" tabindex="0" data-pat="hiperlordose">Hiperlordose lombar</div>
         </div>
       </div>
     </div>
@@ -2062,6 +2210,20 @@
     </div>
   </footer>
 
+  <!-- ========== MODAL PATOLOGIA ========== -->
+  <div class="pat-modal-overlay" id="patModal" aria-hidden="true">
+    <div class="pat-modal" role="dialog" aria-modal="true" aria-labelledby="patModalTitle">
+      <button class="pat-modal-close" id="patModalClose" aria-label="Fechar">&times;</button>
+      <span class="pat-modal-tag">Patologia que tratamos</span>
+      <h3 class="pat-modal-title" id="patModalTitle"></h3>
+      <div class="pat-modal-body" id="patModalBody"></div>
+      <a class="pat-modal-cta" id="patModalCta" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        Agendar avaliação
+      </a>
+    </div>
+  </div>
+
   <!-- ========== WHATSAPP FLUTUANTE ========== -->
   <a href="https://wa.me/5511913528080?text=Ol%C3%A1%20Dr.%20Samuel!%20Gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o."
      target="_blank" class="whatsapp-float" aria-label="WhatsApp">
@@ -2085,6 +2247,110 @@
       document.getElementById('mobileMenu').classList.toggle('active');
       document.body.style.overflow = document.getElementById('mobileMenu').classList.contains('active') ? 'hidden' : '';
     }
+
+    // ========== PATOLOGIAS — MODAL DE DETALHES ==========
+    // Conteúdo educativo de cada patologia. Textos podem ser ajustados/revisados pelo Dr. Samuel.
+    const PATOLOGIAS = {
+      'lombalgia': {
+        titulo: 'Dor lombar (lombalgia)',
+        texto: ['A lombalgia é a dor localizada na região baixa das costas — uma das queixas mais comuns, ligada a má postura, sobrecarga, sedentarismo ou tensão muscular.','No tratamento, avaliamos a origem da dor e trabalhamos com ajustes, mobilização e reequilíbrio muscular para aliviar a tensão e devolver mobilidade à sua coluna.']
+      },
+      'dorsalgia': {
+        titulo: 'Dor torácica (dorsalgia)',
+        texto: ['A dorsalgia é a dor na região do meio das costas, entre os ombros. Costuma surgir de postura inadequada, longas horas sentado ou tensão acumulada.','Com um protocolo personalizado, aliviamos os pontos de tensão e corrigimos padrões posturais para reduzir o desconforto no dia a dia.']
+      },
+      'cervicalgia': {
+        titulo: 'Dor no pescoço (cervicalgia)',
+        texto: ['A cervicalgia é a dor na região do pescoço, muitas vezes associada ao uso excessivo de celular e computador, estresse e má postura.','O tratamento combina ajustes e liberação muscular para aliviar a rigidez, melhorar a mobilidade cervical e reduzir dores de cabeça associadas.']
+      },
+      'hernia-de-disco': {
+        titulo: 'Hérnia de disco',
+        texto: ['A hérnia de disco ocorre quando o disco entre as vértebras se desloca e pressiona estruturas nervosas, podendo causar dor, formigamento e perda de força.','Trabalhamos com técnicas de descompressão e reequilíbrio para aliviar a pressão sobre o nervo, reduzir a dor e melhorar sua qualidade de vida.']
+      },
+      'escoliose': {
+        titulo: 'Escoliose',
+        texto: ['A escoliose é um desvio lateral da coluna que pode gerar dores, assimetrias e desconforto postural ao longo do tempo.','Com avaliação detalhada e protocolo individualizado, buscamos melhorar a mobilidade, aliviar dores e trabalhar o equilíbrio postural.']
+      },
+      'bico-de-papagaio': {
+        titulo: 'Bico de papagaio (osteófito)',
+        texto: ['O bico de papagaio é a formação de pequenas saliências ósseas nas vértebras, geralmente ligada ao desgaste natural da coluna, que pode causar dor e rigidez.','O tratamento foca em aliviar a dor, melhorar a mobilidade e reduzir a sobrecarga sobre a região afetada.']
+      },
+      'enxaqueca': {
+        titulo: 'Enxaqueca',
+        texto: ['A enxaqueca e as dores de cabeça frequentes muitas vezes têm relação com tensão na região cervical e nos ombros.','Com ajustes e liberação de tensão na coluna cervical, ajudamos a reduzir a frequência e a intensidade das crises.']
+      },
+      'insonia': {
+        titulo: 'Insônia',
+        texto: ['A insônia e a dificuldade para relaxar podem estar ligadas a tensões musculares e ao desequilíbrio do sistema nervoso.','O tratamento ajuda a reduzir a tensão corporal e promover relaxamento, favorecendo uma melhor qualidade de sono.']
+      },
+      'ciatico': {
+        titulo: 'Inflamação no nervo ciático',
+        texto: ['A dor ciática irradia da região lombar para a perna, causando dor, formigamento ou fraqueza — geralmente por compressão do nervo ciático.','Aliviamos a compressão sobre o nervo e trabalhamos a região lombar e o quadril para reduzir a dor e recuperar o movimento.']
+      },
+      'dores-articulares': {
+        titulo: 'Dores articulares',
+        texto: ['Dores em ombro, joelho, tornozelo, cotovelo e punho podem surgir de sobrecarga, lesões ou desequilíbrios de movimento.','Avaliamos cada articulação e montamos um protocolo para aliviar a dor, melhorar a mobilidade e devolver a funcionalidade.']
+      },
+      'tendinite': {
+        titulo: 'Tendinite',
+        texto: ['A tendinite é a inflamação de um tendão, comum por movimentos repetitivos ou sobrecarga, causando dor e limitação de movimento.','O tratamento reduz a inflamação, alivia a dor e corrige os padrões que sobrecarregam o tendão, favorecendo a recuperação.']
+      },
+      'bursite': {
+        titulo: 'Bursite',
+        texto: ['A bursite é a inflamação da bursa (bolsa que amortece as articulações), gerando dor e dificuldade de movimento, principalmente no ombro e quadril.','Trabalhamos no alívio da inflamação e no reequilíbrio da articulação para reduzir a dor e melhorar a mobilidade.']
+      },
+      'epicondilite': {
+        titulo: 'Epicondilite',
+        texto: ['A epicondilite — conhecida como "cotovelo de tenista" ou "de golfista" — é a inflamação dos tendões do cotovelo por esforço repetitivo.','O protocolo alivia a dor, reduz a sobrecarga e ajuda a restaurar a força e o movimento do cotovelo e punho.']
+      },
+      'hipercifose': {
+        titulo: 'Hipercifose torácica',
+        texto: ['A hipercifose é o aumento da curvatura das costas ("corcunda"), muito ligado à postura e ao enfraquecimento muscular, podendo causar dor e rigidez.','Trabalhamos a mobilidade da coluna torácica e o reequilíbrio postural para melhorar a postura e aliviar o desconforto.']
+      },
+      'hiperlordose': {
+        titulo: 'Hiperlordose lombar',
+        texto: ['A hiperlordose é o aumento da curvatura na região lombar, que sobrecarrega a coluna baixa e pode gerar dores e tensão.','Com ajustes e fortalecimento direcionado, buscamos reequilibrar a postura, aliviar a sobrecarga e reduzir a dor lombar.']
+      }
+    };
+
+    (function initPatologias() {
+      const overlay = document.getElementById('patModal');
+      if (!overlay) return;
+      const titleEl = document.getElementById('patModalTitle');
+      const bodyEl = document.getElementById('patModalBody');
+      const ctaEl = document.getElementById('patModalCta');
+      const closeEl = document.getElementById('patModalClose');
+      const WA = 'https://wa.me/5511913528080?text=';
+
+      function openModal(key) {
+        const data = PATOLOGIAS[key];
+        if (!data) return;
+        titleEl.textContent = data.titulo;
+        bodyEl.innerHTML = data.texto.map(p => '<p>' + p + '</p>').join('');
+        const msg = 'Olá Dr. Samuel! Gostaria de agendar uma avaliação para ' + data.titulo + '.';
+        ctaEl.href = WA + encodeURIComponent(msg);
+        overlay.classList.add('active');
+        overlay.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeModal() {
+        overlay.classList.remove('active');
+        overlay.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      }
+
+      document.querySelectorAll('.patologia-item[data-pat]').forEach(item => {
+        item.addEventListener('click', () => openModal(item.getAttribute('data-pat')));
+        item.addEventListener('keydown', e => {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(item.getAttribute('data-pat')); }
+        });
+      });
+
+      closeEl.addEventListener('click', closeModal);
+      overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+      document.addEventListener('keydown', e => { if (e.key === 'Escape' && overlay.classList.contains('active')) closeModal(); });
+    })();
 
     // Scroll reveal with Intersection Observer
     const revealElements = document.querySelectorAll('.reveal');
