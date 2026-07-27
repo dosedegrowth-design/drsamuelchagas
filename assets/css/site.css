@@ -1656,3 +1656,68 @@
     .pat-faq summary::after { content: "+"; font-size: 1.5rem; line-height: 1; color: var(--gray); transition: transform 0.3s ease; flex-shrink: 0; }
     .pat-faq details[open] summary::after { transform: rotate(45deg); }
     .pat-faq details p { padding: 0 22px 20px; margin: 0; font-size: 1.02rem; line-height: 1.75; color: #444; }
+
+
+    /* ===== PAT HERO v2 (profundidade) ===== */
+    .pat-hero {
+      position: relative;
+      background:
+        radial-gradient(120% 90% at 12% -10%, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0) 52%),
+        linear-gradient(158deg, #1d1d20 0%, #131315 46%, #0a0a0a 100%);
+      color: var(--white);
+      padding: 185px 0 105px;
+      overflow: hidden;
+      isolation: isolate;
+    }
+    .pat-hero::before {
+      content: ""; position: absolute; inset: 0; z-index: -1;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+      opacity: 0.35; mix-blend-mode: overlay; pointer-events: none;
+    }
+    .pat-hero::after {
+      content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
+    }
+    .pat-hero-glow {
+      position: absolute; top: -160px; right: 4%; width: 520px; height: 520px; z-index: -1;
+      background: radial-gradient(circle, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0) 68%);
+      pointer-events: none;
+    }
+    .pat-hero-pattern {
+      position: absolute; top: -20px; right: -20px; height: 128%;
+      opacity: 0.08; z-index: -1; pointer-events: none;
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 60%);
+      mask-image: linear-gradient(90deg, transparent, #000 60%);
+    }
+    .pat-hero .pat-breadcrumb { margin-bottom: 24px; }
+    .pat-hero-lead {
+      max-width: 52ch; margin-top: 22px;
+      font-family: var(--font-body); font-weight: 300;
+      font-size: clamp(1.05rem, 2.1vw, 1.3rem); line-height: 1.65;
+      color: rgba(255,255,255,0.74);
+    }
+    .pat-hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 22px; margin-top: 36px; }
+    .pat-hero-chips { display: flex; flex-wrap: wrap; gap: 10px; }
+    .pat-hero-chips a {
+      font-family: var(--font-body); font-size: 0.82rem; letter-spacing: 0.3px;
+      color: rgba(255,255,255,0.82); text-decoration: none;
+      padding: 9px 17px; border: 1px solid rgba(255,255,255,0.18); border-radius: 100px;
+      transition: all 0.3s ease; background: rgba(255,255,255,0.02);
+    }
+    .pat-hero-chips a:hover { background: rgba(255,255,255,0.10); border-color: rgba(255,255,255,0.42); color: #fff; transform: translateY(-1px); }
+
+    .pat-body h2[id] { scroll-margin-top: 96px; }
+
+    @keyframes patRise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+    .pat-hero .pat-breadcrumb, .pat-hero .section-tag, .pat-hero h1, .pat-hero-lead, .pat-hero-actions {
+      animation: patRise 0.7s cubic-bezier(0.2,0.7,0.2,1) backwards;
+    }
+    .pat-hero .section-tag { animation-delay: 0.05s; }
+    .pat-hero h1 { animation-delay: 0.12s; }
+    .pat-hero-lead { animation-delay: 0.20s; }
+    .pat-hero-actions { animation-delay: 0.28s; }
+    @media (prefers-reduced-motion: reduce) { .pat-hero * { animation: none !important; } }
+    @media (max-width: 768px) {
+      .pat-hero { padding: 140px 0 68px; }
+      .pat-hero-glow { width: 320px; height: 320px; }
+    }

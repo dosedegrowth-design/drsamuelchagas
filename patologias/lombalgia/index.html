@@ -35,48 +35,76 @@
       "url": "https://drsamuelchagas.com.br/patologias/lombalgia/",
       "description": "A lombalgia é a dor localizada na região baixa das costas — uma das queixas mais comuns, ligada a má postura, sobrecarga, sedentarismo ou tensão muscular.",
       "inLanguage": "pt-BR",
-      "about": { "@type": "MedicalCondition", "name": "Dor lombar" },
-      "author": { "@type": "Person", "name": "Dr. Samuel Chagas", "jobTitle": "Fisioterapeuta", "identifier": "Crefito/SP 335633-F" },
-      "publisher": { "@type": "MedicalBusiness", "name": "Dr. Samuel Chagas - Fisioterapia e Quiropraxia", "telephone": "+5511913528080", "url": "https://drsamuelchagas.com.br/" }
+      "about": {
+        "@type": "MedicalCondition",
+        "name": "Dor lombar"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Dr. Samuel Chagas",
+        "jobTitle": "Fisioterapeuta",
+        "identifier": "Crefito/SP 335633-F"
+      },
+      "publisher": {
+        "@type": "MedicalBusiness",
+        "name": "Dr. Samuel Chagas - Fisioterapia e Quiropraxia",
+        "telephone": "+5511913528080",
+        "url": "https://drsamuelchagas.com.br/"
+      }
     },
     {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Início", "item": "https://drsamuelchagas.com.br/" },
-        { "@type": "ListItem", "position": 2, "name": "Patologias", "item": "https://drsamuelchagas.com.br/patologias/" },
-        { "@type": "ListItem", "position": 3, "name": "Dor lombar (lombalgia)", "item": "https://drsamuelchagas.com.br/patologias/lombalgia/" }
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Início",
+          "item": "https://drsamuelchagas.com.br/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Patologias",
+          "item": "https://drsamuelchagas.com.br/patologias/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Dor lombar (lombalgia)",
+          "item": "https://drsamuelchagas.com.br/patologias/lombalgia/"
+        }
       ]
     },
     {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-            {
-                "@type": "Question",
-                "name": "Dor lombar tem cura?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Na maioria dos casos a lombalgia melhora bastante com o tratamento certo e ajustes de hábitos. O objetivo é aliviar a dor e corrigir a causa para que ela não volte."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Quantas sessões vou precisar?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Depende da causa e da intensidade da dor. Muitos pacientes já sentem alívio nas primeiras sessões; a avaliação inicial define o plano ideal para o seu caso."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Preciso levar exames?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Nem sempre. Na avaliação o Dr. Samuel identifica se há necessidade de exames de imagem complementares."
-                }
-            }
-        ]
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Dor lombar tem cura?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Na maioria dos casos a lombalgia melhora bastante com o tratamento certo e ajustes de hábitos. O objetivo é aliviar a dor e corrigir a causa para que ela não volte."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quantas sessões vou precisar?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Depende da causa e da intensidade da dor. Muitos pacientes já sentem alívio nas primeiras sessões; a avaliação inicial define o plano ideal para o seu caso."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Preciso levar exames?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nem sempre. Na avaliação o Dr. Samuel identifica se há necessidade de exames de imagem complementares."
+          }
+        }
+      ]
     }
   ]
   </script>
@@ -95,6 +123,7 @@
       <ul class="nav-links">
         <li><a href="/#sobre">Sobre</a></li>
         <li><a href="/#servicos">Serviços</a></li>
+        <li><a href="/patologias/">Patologias</a></li>
         <li><a href="/#metodo">Método</a></li>
         <li><a href="/#resultados">Resultados</a></li>
         <li><a href="/#contato">Contato</a></li>
@@ -107,6 +136,7 @@
     <button class="nav-mobile-close" onclick="toggleMobileMenu()">&times;</button>
     <a href="/#sobre" onclick="toggleMobileMenu()">Sobre</a>
     <a href="/#servicos" onclick="toggleMobileMenu()">Serviços</a>
+    <a href="/patologias/" onclick="toggleMobileMenu()">Patologias</a>
     <a href="/#metodo" onclick="toggleMobileMenu()">Método</a>
     <a href="/#resultados" onclick="toggleMobileMenu()">Resultados</a>
     <a href="/#contato" onclick="toggleMobileMenu()">Contato</a>
@@ -114,20 +144,28 @@
   </div>
 
   <header class="pat-hero">
-    <svg class="pat-hero-pattern" width="220" height="700" viewBox="0 0 200 700" fill="white" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M0 0L100 60L200 0V80L100 140L0 80V0Z"/><path d="M0 120L100 180L200 120V200L100 260L0 200V120Z"/><path d="M0 240L100 300L200 240V320L100 380L0 320V240Z"/><path d="M0 360L100 420L200 360V440L100 500L0 440V360Z"/><path d="M0 480L100 540L200 480V560L100 620L0 560V480Z"/></svg>
+    <div class="pat-hero-glow" aria-hidden="true"></div>
+    <svg class="pat-hero-pattern" width="240" height="760" viewBox="0 0 200 700" fill="white" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M0 0L100 60L200 0V80L100 140L0 80V0Z"/><path d="M0 120L100 180L200 120V200L100 260L0 200V120Z"/><path d="M0 240L100 300L200 240V320L100 380L0 320V240Z"/><path d="M0 360L100 420L200 360V440L100 500L0 440V360Z"/><path d="M0 480L100 540L200 480V560L100 620L0 560V480Z"/><path d="M0 600L100 660L200 600V680L100 740L0 680V600Z"/></svg>
     <div class="container">
-      <nav class="pat-breadcrumb" aria-label="Trilha">
-        <a href="/">Início</a> › <a href="/#servicos">Patologias</a> › <span>Dor lombar (lombalgia)</span>
-      </nav>
+      <nav class="pat-breadcrumb" aria-label="Trilha"><a href="/">Início</a> › <a href="/patologias/">Patologias</a> › <span>Dor lombar (lombalgia)</span></nav>
       <span class="section-tag">Patologia que tratamos</span>
       <h1>Dor lombar (lombalgia)</h1>
+      <p class="pat-hero-lead">A lombalgia é a dor localizada na região baixa das costas — uma das queixas mais comuns, ligada a má postura, sobrecarga, sedentarismo ou tensão muscular.</p>
+      <div class="pat-hero-actions">
+        <a href="https://wa.me/5511913528080?text=Ol%C3%A1%20Dr.%20Samuel%21%20Gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20para%20Dor%20lombar%20%28lombalgia%29." target="_blank" class="hero-cta"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>Agendar avaliação</a>
+        <div class="pat-hero-chips">
+          <a href="#sintomas">Sintomas</a>
+          <a href="#causas">Causas</a>
+          <a href="#tratamento">Tratamento</a>
+          <a href="#faq">Dúvidas</a>
+        </div>
+      </div>
     </div>
   </header>
 
   <main class="pat-body">
     <div class="container">
-      <p>A lombalgia é a dor localizada na região baixa das costas — uma das queixas mais comuns, ligada a má postura, sobrecarga, sedentarismo ou tensão muscular.</p>
-      <h2>Sintomas de Dor lombar</h2>
+      <h2 id="sintomas">Sintomas de Dor lombar</h2>
       <ul>
         <li>Dor ou rigidez na parte baixa das costas</li>
         <li>Dor que piora ao ficar muito tempo sentado ou em pé</li>
@@ -136,7 +174,7 @@
         <li>Sensação de “travamento” ao mudar de posição</li>
       </ul>
 
-      <h2>Possíveis causas</h2>
+      <h2 id="causas">Possíveis causas</h2>
       <ul>
         <li>Má postura no trabalho e no dia a dia</li>
         <li>Sedentarismo e enfraquecimento do core</li>
@@ -145,11 +183,11 @@
         <li>Excesso de peso e tensão muscular acumulada</li>
       </ul>
 
-      <h2>Como o Dr. Samuel trata Dor lombar</h2>
+      <h2 id="tratamento">Como o Dr. Samuel trata Dor lombar</h2>
       <p>No tratamento, avaliamos a origem da dor e trabalhamos com ajustes, mobilização e reequilíbrio muscular para aliviar a tensão e devolver mobilidade à sua coluna.</p>
       <p><a class="hero-cta" href="https://wa.me/5511913528080?text=Ol%C3%A1%20Dr.%20Samuel%21%20Gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20para%20Dor%20lombar%20%28lombalgia%29." target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>Agendar avaliação</a></p>
 
-      <h2>Perguntas frequentes</h2>
+      <h2 id="faq">Perguntas frequentes</h2>
       <div class="pat-faq">
         <details><summary>Dor lombar tem cura?</summary><p>Na maioria dos casos a lombalgia melhora bastante com o tratamento certo e ajustes de hábitos. O objetivo é aliviar a dor e corrigir a causa para que ela não volte.</p></details>
         <details><summary>Quantas sessões vou precisar?</summary><p>Depende da causa e da intensidade da dor. Muitos pacientes já sentem alívio nas primeiras sessões; a avaliação inicial define o plano ideal para o seu caso.</p></details>
