@@ -66,12 +66,52 @@ function toggleMobileMenu() {
   counters.forEach(function (c) { counterObserver.observe(c); });
 })();
 
-// Smooth scroll para ancoras da mesma pagina
+// Smooth scroll das ancoras — animacao propria (rAF), nao depende do scroll-behavior
+// nativo (que trava com overflow-x:hidden) e compensa a altura da navbar fixa.
+function smoothScrollTo(targetY, duration) {
+  var startY = window.pageYOffset || document.documentElement.scrollTop;
+  var diff = targetY - startY;
+  if (Math.abs(diff) < 2) { window.scrollTo(0, targetY); return; }
+  var startTime = null;
+  function ease(t) { return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
+  function step(now) {
+    if (startTime === null) startTime = now;
+    var t = Math.min((now - startTime) / duration, 1);
+    window.scrollTo(0, Math.round(startY + diff * ease(t)));
+    if (t < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
 document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
   anchor.addEventListener('click', function (e) {
     var id = this.getAttribute('href');
     if (id === '#' || id.length < 2) return;
     var target = document.querySelector(id);
-    if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    if (!target) return;
+    e.preventDefault();
+    var nav = document.getElementById('navbar');
+    var offset = (nav ? nav.offsetHeight : 0) + 12;
+    var y = target.getBoundingClientRect().top + (window.pageYOffset || document.documentElement.scrollTop) - offset;
+    smoothScrollTo(y, 600);
+    if (history.replaceState) history.replaceState(null, '', id);
   });
 });
+
+// Instagram embeds: carrega sob demanda (perf — evita ~2.5s de bloqueio no topo)
+(function () {
+  var vids = document.getElementById('videos');
+  if (!vids || !document.querySelector('.instagram-media, blockquote.instagram-media')) return;
+  var loaded = false;
+  function loadIG() {
+    if (loaded) return; loaded = true;
+    var s = document.createElement('script');
+    s.async = true; s.src = 'https://www.instagram.com/embed.js';
+    document.body.appendChild(s);
+  }
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) { loadIG(); io.disconnect(); } });
+    }, { rootMargin: '500px' });
+    io.observe(vids);
+  } else { loadIG(); }
+})();
