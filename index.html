@@ -911,25 +911,27 @@
     .pat-modal-cta {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
       margin-top: 8px;
-      background: #25D366;
-      color: #fff;
+      background: var(--black);
+      color: var(--white);
       font-family: var(--font-primary);
-      font-weight: 600;
-      font-size: 1rem;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
       text-decoration: none;
-      padding: 14px 26px;
-      border-radius: 50px;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      padding: 16px 34px;
+      border-radius: 100px;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .pat-modal-cta:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(37,211,102,0.35);
+      transform: scale(1.05);
+      box-shadow: 0 0 40px rgba(0,0,0,0.2);
     }
 
-    .pat-modal-cta svg { width: 20px; height: 20px; fill: #fff; }
+    .pat-modal-cta svg { width: 20px; height: 20px; fill: var(--white); }
 
     @media (max-width: 768px) {
       .pat-modal { padding: 36px 22px 26px; border-radius: 16px; }
@@ -2210,6 +2212,25 @@
     </div>
   </footer>
 
+  <!-- ========== CONTEUDO DAS PATOLOGIAS (HTML rastreavel p/ SEO; exibido no modal ao clicar) ========== -->
+  <div id="patData" hidden>
+    <article data-pat="lombalgia"><h4>Dor lombar (lombalgia)</h4><p>A lombalgia é a dor localizada na região baixa das costas — uma das queixas mais comuns, ligada a má postura, sobrecarga, sedentarismo ou tensão muscular.</p><p>No tratamento, avaliamos a origem da dor e trabalhamos com ajustes, mobilização e reequilíbrio muscular para aliviar a tensão e devolver mobilidade à sua coluna.</p></article>
+    <article data-pat="dorsalgia"><h4>Dor torácica (dorsalgia)</h4><p>A dorsalgia é a dor na região do meio das costas, entre os ombros. Costuma surgir de postura inadequada, longas horas sentado ou tensão acumulada.</p><p>Com um protocolo personalizado, aliviamos os pontos de tensão e corrigimos padrões posturais para reduzir o desconforto no dia a dia.</p></article>
+    <article data-pat="cervicalgia"><h4>Dor no pescoço (cervicalgia)</h4><p>A cervicalgia é a dor na região do pescoço, muitas vezes associada ao uso excessivo de celular e computador, estresse e má postura.</p><p>O tratamento combina ajustes e liberação muscular para aliviar a rigidez, melhorar a mobilidade cervical e reduzir dores de cabeça associadas.</p></article>
+    <article data-pat="hernia-de-disco"><h4>Hérnia de disco</h4><p>A hérnia de disco ocorre quando o disco entre as vértebras se desloca e pressiona estruturas nervosas, podendo causar dor, formigamento e perda de força.</p><p>Trabalhamos com técnicas de descompressão e reequilíbrio para aliviar a pressão sobre o nervo, reduzir a dor e melhorar sua qualidade de vida.</p></article>
+    <article data-pat="escoliose"><h4>Escoliose</h4><p>A escoliose é um desvio lateral da coluna que pode gerar dores, assimetrias e desconforto postural ao longo do tempo.</p><p>Com avaliação detalhada e protocolo individualizado, buscamos melhorar a mobilidade, aliviar dores e trabalhar o equilíbrio postural.</p></article>
+    <article data-pat="bico-de-papagaio"><h4>Bico de papagaio (osteófito)</h4><p>O bico de papagaio é a formação de pequenas saliências ósseas nas vértebras, geralmente ligada ao desgaste natural da coluna, que pode causar dor e rigidez.</p><p>O tratamento foca em aliviar a dor, melhorar a mobilidade e reduzir a sobrecarga sobre a região afetada.</p></article>
+    <article data-pat="enxaqueca"><h4>Enxaqueca</h4><p>A enxaqueca e as dores de cabeça frequentes muitas vezes têm relação com tensão na região cervical e nos ombros.</p><p>Com ajustes e liberação de tensão na coluna cervical, ajudamos a reduzir a frequência e a intensidade das crises.</p></article>
+    <article data-pat="insonia"><h4>Insônia</h4><p>A insônia e a dificuldade para relaxar podem estar ligadas a tensões musculares e ao desequilíbrio do sistema nervoso.</p><p>O tratamento ajuda a reduzir a tensão corporal e promover relaxamento, favorecendo uma melhor qualidade de sono.</p></article>
+    <article data-pat="ciatico"><h4>Inflamação no nervo ciático</h4><p>A dor ciática irradia da região lombar para a perna, causando dor, formigamento ou fraqueza — geralmente por compressão do nervo ciático.</p><p>Aliviamos a compressão sobre o nervo e trabalhamos a região lombar e o quadril para reduzir a dor e recuperar o movimento.</p></article>
+    <article data-pat="dores-articulares"><h4>Dores articulares</h4><p>Dores em ombro, joelho, tornozelo, cotovelo e punho podem surgir de sobrecarga, lesões ou desequilíbrios de movimento.</p><p>Avaliamos cada articulação e montamos um protocolo para aliviar a dor, melhorar a mobilidade e devolver a funcionalidade.</p></article>
+    <article data-pat="tendinite"><h4>Tendinite</h4><p>A tendinite é a inflamação de um tendão, comum por movimentos repetitivos ou sobrecarga, causando dor e limitação de movimento.</p><p>O tratamento reduz a inflamação, alivia a dor e corrige os padrões que sobrecarregam o tendão, favorecendo a recuperação.</p></article>
+    <article data-pat="bursite"><h4>Bursite</h4><p>A bursite é a inflamação da bursa (bolsa que amortece as articulações), gerando dor e dificuldade de movimento, principalmente no ombro e quadril.</p><p>Trabalhamos no alívio da inflamação e no reequilíbrio da articulação para reduzir a dor e melhorar a mobilidade.</p></article>
+    <article data-pat="epicondilite"><h4>Epicondilite</h4><p>A epicondilite — conhecida como "cotovelo de tenista" ou "de golfista" — é a inflamação dos tendões do cotovelo por esforço repetitivo.</p><p>O protocolo alivia a dor, reduz a sobrecarga e ajuda a restaurar a força e o movimento do cotovelo e punho.</p></article>
+    <article data-pat="hipercifose"><h4>Hipercifose torácica</h4><p>A hipercifose é o aumento da curvatura das costas ("corcunda"), muito ligado à postura e ao enfraquecimento muscular, podendo causar dor e rigidez.</p><p>Trabalhamos a mobilidade da coluna torácica e o reequilíbrio postural para melhorar a postura e aliviar o desconforto.</p></article>
+    <article data-pat="hiperlordose"><h4>Hiperlordose lombar</h4><p>A hiperlordose é o aumento da curvatura na região lombar, que sobrecarrega a coluna baixa e pode gerar dores e tensão.</p><p>Com ajustes e fortalecimento direcionado, buscamos reequilibrar a postura, aliviar a sobrecarga e reduzir a dor lombar.</p></article>
+  </div>
+
   <!-- ========== MODAL PATOLOGIA ========== -->
   <div class="pat-modal-overlay" id="patModal" aria-hidden="true">
     <div class="pat-modal" role="dialog" aria-modal="true" aria-labelledby="patModalTitle">
@@ -2249,73 +2270,12 @@
     }
 
     // ========== PATOLOGIAS — MODAL DE DETALHES ==========
-    // Conteúdo educativo de cada patologia. Textos podem ser ajustados/revisados pelo Dr. Samuel.
-    const PATOLOGIAS = {
-      'lombalgia': {
-        titulo: 'Dor lombar (lombalgia)',
-        texto: ['A lombalgia é a dor localizada na região baixa das costas — uma das queixas mais comuns, ligada a má postura, sobrecarga, sedentarismo ou tensão muscular.','No tratamento, avaliamos a origem da dor e trabalhamos com ajustes, mobilização e reequilíbrio muscular para aliviar a tensão e devolver mobilidade à sua coluna.']
-      },
-      'dorsalgia': {
-        titulo: 'Dor torácica (dorsalgia)',
-        texto: ['A dorsalgia é a dor na região do meio das costas, entre os ombros. Costuma surgir de postura inadequada, longas horas sentado ou tensão acumulada.','Com um protocolo personalizado, aliviamos os pontos de tensão e corrigimos padrões posturais para reduzir o desconforto no dia a dia.']
-      },
-      'cervicalgia': {
-        titulo: 'Dor no pescoço (cervicalgia)',
-        texto: ['A cervicalgia é a dor na região do pescoço, muitas vezes associada ao uso excessivo de celular e computador, estresse e má postura.','O tratamento combina ajustes e liberação muscular para aliviar a rigidez, melhorar a mobilidade cervical e reduzir dores de cabeça associadas.']
-      },
-      'hernia-de-disco': {
-        titulo: 'Hérnia de disco',
-        texto: ['A hérnia de disco ocorre quando o disco entre as vértebras se desloca e pressiona estruturas nervosas, podendo causar dor, formigamento e perda de força.','Trabalhamos com técnicas de descompressão e reequilíbrio para aliviar a pressão sobre o nervo, reduzir a dor e melhorar sua qualidade de vida.']
-      },
-      'escoliose': {
-        titulo: 'Escoliose',
-        texto: ['A escoliose é um desvio lateral da coluna que pode gerar dores, assimetrias e desconforto postural ao longo do tempo.','Com avaliação detalhada e protocolo individualizado, buscamos melhorar a mobilidade, aliviar dores e trabalhar o equilíbrio postural.']
-      },
-      'bico-de-papagaio': {
-        titulo: 'Bico de papagaio (osteófito)',
-        texto: ['O bico de papagaio é a formação de pequenas saliências ósseas nas vértebras, geralmente ligada ao desgaste natural da coluna, que pode causar dor e rigidez.','O tratamento foca em aliviar a dor, melhorar a mobilidade e reduzir a sobrecarga sobre a região afetada.']
-      },
-      'enxaqueca': {
-        titulo: 'Enxaqueca',
-        texto: ['A enxaqueca e as dores de cabeça frequentes muitas vezes têm relação com tensão na região cervical e nos ombros.','Com ajustes e liberação de tensão na coluna cervical, ajudamos a reduzir a frequência e a intensidade das crises.']
-      },
-      'insonia': {
-        titulo: 'Insônia',
-        texto: ['A insônia e a dificuldade para relaxar podem estar ligadas a tensões musculares e ao desequilíbrio do sistema nervoso.','O tratamento ajuda a reduzir a tensão corporal e promover relaxamento, favorecendo uma melhor qualidade de sono.']
-      },
-      'ciatico': {
-        titulo: 'Inflamação no nervo ciático',
-        texto: ['A dor ciática irradia da região lombar para a perna, causando dor, formigamento ou fraqueza — geralmente por compressão do nervo ciático.','Aliviamos a compressão sobre o nervo e trabalhamos a região lombar e o quadril para reduzir a dor e recuperar o movimento.']
-      },
-      'dores-articulares': {
-        titulo: 'Dores articulares',
-        texto: ['Dores em ombro, joelho, tornozelo, cotovelo e punho podem surgir de sobrecarga, lesões ou desequilíbrios de movimento.','Avaliamos cada articulação e montamos um protocolo para aliviar a dor, melhorar a mobilidade e devolver a funcionalidade.']
-      },
-      'tendinite': {
-        titulo: 'Tendinite',
-        texto: ['A tendinite é a inflamação de um tendão, comum por movimentos repetitivos ou sobrecarga, causando dor e limitação de movimento.','O tratamento reduz a inflamação, alivia a dor e corrige os padrões que sobrecarregam o tendão, favorecendo a recuperação.']
-      },
-      'bursite': {
-        titulo: 'Bursite',
-        texto: ['A bursite é a inflamação da bursa (bolsa que amortece as articulações), gerando dor e dificuldade de movimento, principalmente no ombro e quadril.','Trabalhamos no alívio da inflamação e no reequilíbrio da articulação para reduzir a dor e melhorar a mobilidade.']
-      },
-      'epicondilite': {
-        titulo: 'Epicondilite',
-        texto: ['A epicondilite — conhecida como "cotovelo de tenista" ou "de golfista" — é a inflamação dos tendões do cotovelo por esforço repetitivo.','O protocolo alivia a dor, reduz a sobrecarga e ajuda a restaurar a força e o movimento do cotovelo e punho.']
-      },
-      'hipercifose': {
-        titulo: 'Hipercifose torácica',
-        texto: ['A hipercifose é o aumento da curvatura das costas ("corcunda"), muito ligado à postura e ao enfraquecimento muscular, podendo causar dor e rigidez.','Trabalhamos a mobilidade da coluna torácica e o reequilíbrio postural para melhorar a postura e aliviar o desconforto.']
-      },
-      'hiperlordose': {
-        titulo: 'Hiperlordose lombar',
-        texto: ['A hiperlordose é o aumento da curvatura na região lombar, que sobrecarrega a coluna baixa e pode gerar dores e tensão.','Com ajustes e fortalecimento direcionado, buscamos reequilibrar a postura, aliviar a sobrecarga e reduzir a dor lombar.']
-      }
-    };
-
+    // O conteúdo de cada patologia vive no HTML (#patData) para ser indexado pelo Google.
+    // O modal apenas exibe esse conteúdo ao clicar. Textos revisáveis pelo Dr. Samuel no HTML.
     (function initPatologias() {
       const overlay = document.getElementById('patModal');
-      if (!overlay) return;
+      const dataRoot = document.getElementById('patData');
+      if (!overlay || !dataRoot) return;
       const titleEl = document.getElementById('patModalTitle');
       const bodyEl = document.getElementById('patModalBody');
       const ctaEl = document.getElementById('patModalCta');
@@ -2323,11 +2283,13 @@
       const WA = 'https://wa.me/5511913528080?text=';
 
       function openModal(key) {
-        const data = PATOLOGIAS[key];
-        if (!data) return;
-        titleEl.textContent = data.titulo;
-        bodyEl.innerHTML = data.texto.map(p => '<p>' + p + '</p>').join('');
-        const msg = 'Olá Dr. Samuel! Gostaria de agendar uma avaliação para ' + data.titulo + '.';
+        const src = dataRoot.querySelector('article[data-pat="' + key + '"]');
+        if (!src) return;
+        const titulo = src.querySelector('h4').textContent;
+        titleEl.textContent = titulo;
+        bodyEl.innerHTML = Array.from(src.querySelectorAll('p'))
+          .map(p => '<p>' + p.innerHTML + '</p>').join('');
+        const msg = 'Olá Dr. Samuel! Gostaria de agendar uma avaliação para ' + titulo + '.';
         ctaEl.href = WA + encodeURIComponent(msg);
         overlay.classList.add('active');
         overlay.setAttribute('aria-hidden', 'false');
