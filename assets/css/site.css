@@ -1643,3 +1643,16 @@
       .pat-hero { padding: 140px 0 70px; }
       .pat-body { padding: 60px 0; }
     }
+
+
+    /* ===== PAT: listas + FAQ ===== */
+    .pat-body ul { margin: 4px 0 26px; padding: 0; list-style: none; }
+    .pat-body ul li { position: relative; padding-left: 26px; margin-bottom: 12px; font-size: 1.05rem; line-height: 1.7; color: #333; }
+    .pat-body ul li::before { content: ""; position: absolute; left: 2px; top: 11px; width: 8px; height: 8px; border-radius: 50%; background: var(--black); }
+    .pat-faq { margin-top: 6px; }
+    .pat-faq details { border: 1px solid rgba(0,0,0,0.1); border-radius: 12px; margin-bottom: 12px; overflow: hidden; background: var(--white); }
+    .pat-faq summary { cursor: pointer; padding: 18px 22px; font-family: var(--font-primary); font-weight: 600; font-size: 1.05rem; color: var(--black); list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+    .pat-faq summary::-webkit-details-marker { display: none; }
+    .pat-faq summary::after { content: "+"; font-size: 1.5rem; line-height: 1; color: var(--gray); transition: transform 0.3s ease; flex-shrink: 0; }
+    .pat-faq details[open] summary::after { transform: rotate(45deg); }
+    .pat-faq details p { padding: 0 22px 20px; margin: 0; font-size: 1.02rem; line-height: 1.75; color: #444; }
