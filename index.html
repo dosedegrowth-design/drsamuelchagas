@@ -446,8 +446,9 @@
         </div>
       </div>
 
-      <div class="reviews-rolling reveal" role="region" aria-label="Avaliações de pacientes no Google">
-        <div class="reviews-track">
+      <div class="reviews-carousel reveal" role="region" aria-label="Avaliações de pacientes no Google">
+        <button class="rev-nav rev-nav-prev" type="button" aria-label="Ver avaliação anterior" data-dir="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <div class="reviews-track" id="reviewsTrack">
         <figure class="rev-card">
           <div class="rev-top">
             <span class="rev-avatar" style="background:#0F9D58">R</span>
@@ -545,114 +546,6 @@
           <p class="rev-text">Ótima clínica, ambiente agradável e profissionais competentes e gentis! Samuel é um excelente fisioterapeuta e sempre muito atencioso. Recomendo demais.</p>
         </figure>
         <figure class="rev-card">
-          <div class="rev-top">
-            <span class="rev-avatar" style="background:#1976D2">C</span>
-            <span class="rev-id">
-              <span class="rev-name">Claudiney Andrade</span>
-              <span class="rev-meta">há um ano</span>
-            </span>
-            <svg class="rev-g" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.27-4.74 3.27-8.1Z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23Z"/><path fill="#FBBC05" d="M5.84 14.1a6.6 6.6 0 0 1 0-4.2V7.06H2.18a11 11 0 0 0 0 9.88l3.66-2.84Z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1A11 11 0 0 0 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52Z"/></svg>
-          </div>
-          <div class="rev-stars" aria-label="5 estrelas">★★★★★</div>
-          <p class="rev-text">Lugar incrível e impecável, profissionais altamente qualificados e super atenciosos! Atendimento excelente do Dr. Samuel, que literalmente resolveu meus problemas musculares.</p>
-        </figure>
-        <figure class="rev-card" aria-hidden="true">
-          <div class="rev-top">
-            <span class="rev-avatar" style="background:#0F9D58">R</span>
-            <span class="rev-id">
-              <span class="rev-name">Rita Rosa</span>
-              <span class="rev-meta">há um ano</span>
-            </span>
-            <svg class="rev-g" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.27-4.74 3.27-8.1Z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23Z"/><path fill="#FBBC05" d="M5.84 14.1a6.6 6.6 0 0 1 0-4.2V7.06H2.18a11 11 0 0 0 0 9.88l3.66-2.84Z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1A11 11 0 0 0 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52Z"/></svg>
-          </div>
-          <div class="rev-stars" aria-label="5 estrelas">★★★★★</div>
-          <p class="rev-text">Tinha muita dor na coluna e no ombro. Fui atendida pelo Dr. Samuel e em apenas 1 sessão fiquei sem dores. Sou muito feliz de ter conhecido a clínica e o Samuel.</p>
-        </figure>
-        <figure class="rev-card" aria-hidden="true">
-          <div class="rev-top">
-            <span class="rev-avatar" style="background:#7B1FA2">C</span>
-            <span class="rev-id">
-              <span class="rev-name">Camila Soledade</span>
-              <span class="rev-meta">há um ano</span>
-            </span>
-            <svg class="rev-g" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.27-4.74 3.27-8.1Z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23Z"/><path fill="#FBBC05" d="M5.84 14.1a6.6 6.6 0 0 1 0-4.2V7.06H2.18a11 11 0 0 0 0 9.88l3.66-2.84Z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1A11 11 0 0 0 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52Z"/></svg>
-          </div>
-          <div class="rev-stars" aria-label="5 estrelas">★★★★★</div>
-          <p class="rev-text">Excelente profissionais! Atendimento de qualidade e humanizado. Fui atendida pela equipe de fisioterapia, em especial pelo Samuel, e não poderia ter sido melhor!</p>
-        </figure>
-        <figure class="rev-card" aria-hidden="true">
-          <div class="rev-top">
-            <span class="rev-avatar" style="background:#E91E63">S</span>
-            <span class="rev-id">
-              <span class="rev-name">Stephanie De Picciotto</span>
-              <span class="rev-meta">há um ano</span>
-            </span>
-            <svg class="rev-g" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.27-4.74 3.27-8.1Z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23Z"/><path fill="#FBBC05" d="M5.84 14.1a6.6 6.6 0 0 1 0-4.2V7.06H2.18a11 11 0 0 0 0 9.88l3.66-2.84Z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1A11 11 0 0 0 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52Z"/></svg>
-          </div>
-          <div class="rev-stars" aria-label="5 estrelas">★★★★★</div>
-          <p class="rev-text">Ótimo profissional! Manejo e técnicas excelentes.</p>
-        </figure>
-        <figure class="rev-card" aria-hidden="true">
-          <div class="rev-top">
-            <span class="rev-avatar" style="background:#C0392B">J</span>
-            <span class="rev-id">
-              <span class="rev-name">João Carlos</span>
-              <span class="rev-meta">há um ano</span>
-            </span>
-            <svg class="rev-g" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.27-4.74 3.27-8.1Z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23Z"/><path fill="#FBBC05" d="M5.84 14.1a6.6 6.6 0 0 1 0-4.2V7.06H2.18a11 11 0 0 0 0 9.88l3.66-2.84Z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1A11 11 0 0 0 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52Z"/></svg>
-          </div>
-          <div class="rev-stars" aria-label="5 estrelas">★★★★★</div>
-          <p class="rev-text">Tinha dores na coluna e o Dr. Samuel me ajudou muito com a postura. Extremamente competente e profissional, além de muito atencioso. Recomendo para todos!</p>
-        </figure>
-        <figure class="rev-card" aria-hidden="true">
-          <div class="rev-top">
-            <span class="rev-avatar" style="background:#1E88E5">M</span>
-            <span class="rev-id">
-              <span class="rev-name">Milene Napoli</span>
-              <span class="rev-meta">Local Guide · há um ano</span>
-            </span>
-            <svg class="rev-g" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.27-4.74 3.27-8.1Z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23Z"/><path fill="#FBBC05" d="M5.84 14.1a6.6 6.6 0 0 1 0-4.2V7.06H2.18a11 11 0 0 0 0 9.88l3.66-2.84Z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1A11 11 0 0 0 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52Z"/></svg>
-          </div>
-          <div class="rev-stars" aria-label="5 estrelas">★★★★★</div>
-          <p class="rev-text">Maravilhoso o trabalho do Dr. Samuel que, além de um excelente profissional, é uma pessoa fantástica. A cada sessão sinto minha postura cada vez melhor. As mãos dele são mágicas, com uma energia incrível! Saio da clínica super leve. Recomendo muito!!</p>
-        </figure>
-        <figure class="rev-card" aria-hidden="true">
-          <div class="rev-top">
-            <span class="rev-avatar" style="background:#1B5E20">M</span>
-            <span class="rev-id">
-              <span class="rev-name">Miriam Silva</span>
-              <span class="rev-meta">há um ano</span>
-            </span>
-            <svg class="rev-g" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.27-4.74 3.27-8.1Z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23Z"/><path fill="#FBBC05" d="M5.84 14.1a6.6 6.6 0 0 1 0-4.2V7.06H2.18a11 11 0 0 0 0 9.88l3.66-2.84Z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1A11 11 0 0 0 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52Z"/></svg>
-          </div>
-          <div class="rev-stars" aria-label="5 estrelas">★★★★★</div>
-          <p class="rev-text">Sempre sentia dores no corpo e na lombar, e a postura ruim. Já tinha passado por outros profissionais, mas quem me ajudou mesmo foi o Dr. Samuel, muito competente no que faz. Depois de algumas sessões já me sinto outra pessoa!! Recomendo demais.</p>
-        </figure>
-        <figure class="rev-card" aria-hidden="true">
-          <div class="rev-top">
-            <span class="rev-avatar" style="background:#455A64">G</span>
-            <span class="rev-id">
-              <span class="rev-name">Gabriel R Ferreira</span>
-              <span class="rev-meta">há um ano</span>
-            </span>
-            <svg class="rev-g" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.27-4.74 3.27-8.1Z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23Z"/><path fill="#FBBC05" d="M5.84 14.1a6.6 6.6 0 0 1 0-4.2V7.06H2.18a11 11 0 0 0 0 9.88l3.66-2.84Z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1A11 11 0 0 0 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52Z"/></svg>
-          </div>
-          <div class="rev-stars" aria-label="5 estrelas">★★★★★</div>
-          <p class="rev-text">Excelente clínica, profissionais super atenciosos e muito competentes. O Dr. Samuel salvou minha coluna, saí levinho do atendimento. Super recomendo!!</p>
-        </figure>
-        <figure class="rev-card" aria-hidden="true">
-          <div class="rev-top">
-            <span class="rev-avatar" style="background:#F09300">C</span>
-            <span class="rev-id">
-              <span class="rev-name">Cássia Farinazo</span>
-              <span class="rev-meta">há um ano</span>
-            </span>
-            <svg class="rev-g" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.27-4.74 3.27-8.1Z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23Z"/><path fill="#FBBC05" d="M5.84 14.1a6.6 6.6 0 0 1 0-4.2V7.06H2.18a11 11 0 0 0 0 9.88l3.66-2.84Z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1A11 11 0 0 0 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52Z"/></svg>
-          </div>
-          <div class="rev-stars" aria-label="5 estrelas">★★★★★</div>
-          <p class="rev-text">Ótima clínica, ambiente agradável e profissionais competentes e gentis! Samuel é um excelente fisioterapeuta e sempre muito atencioso. Recomendo demais.</p>
-        </figure>
-        <figure class="rev-card" aria-hidden="true">
           <div class="rev-top">
             <span class="rev-avatar" style="background:#1976D2">C</span>
             <span class="rev-id">
@@ -665,6 +558,7 @@
           <p class="rev-text">Lugar incrível e impecável, profissionais altamente qualificados e super atenciosos! Atendimento excelente do Dr. Samuel, que literalmente resolveu meus problemas musculares.</p>
         </figure>
         </div>
+        <button class="rev-nav rev-nav-next" type="button" aria-label="Ver próxima avaliação" data-dir="1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
       </div>
     </div>
   </section>

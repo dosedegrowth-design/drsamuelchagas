@@ -115,3 +115,34 @@ document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
     io.observe(vids);
   } else { loadIG(); }
 })();
+
+
+// Carrossel de avaliacoes: setas + arrasto (mouse) + swipe nativo (touch)
+(function () {
+  var track = document.getElementById('reviewsTrack');
+  if (!track) return;
+  var carousel = track.closest('.reviews-carousel');
+  function step() { var c = track.querySelector('.rev-card'); return (c ? c.getBoundingClientRect().width : 340) + 20; }
+  if (carousel) {
+    carousel.querySelectorAll('.rev-nav').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var dir = parseInt(btn.getAttribute('data-dir'), 10) || 1;
+        track.scrollBy({ left: dir * step(), behavior: 'smooth' });
+      });
+    });
+  }
+  // arrasto com mouse (desktop)
+  var down = false, startX = 0, startScroll = 0, moved = false;
+  track.addEventListener('pointerdown', function (e) {
+    if (e.pointerType === 'mouse') { down = true; moved = false; startX = e.clientX; startScroll = track.scrollLeft; track.classList.add('dragging'); }
+  });
+  window.addEventListener('pointermove', function (e) {
+    if (!down) return;
+    var dx = e.clientX - startX;
+    if (Math.abs(dx) > 4) moved = true;
+    track.scrollLeft = startScroll - dx;
+  });
+  window.addEventListener('pointerup', function () { if (down) { down = false; track.classList.remove('dragging'); } });
+  // nao dispara link ao terminar um arrasto
+  track.addEventListener('click', function (e) { if (moved) { e.preventDefault(); e.stopPropagation(); moved = false; } }, true);
+})();

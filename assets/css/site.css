@@ -1734,11 +1734,16 @@
     .gmn-btn { background: #1a73e8; color: #fff; font-family: var(--font-body); font-weight: 600; font-size: 0.9rem; text-decoration: none; padding: 12px 22px; border-radius: 100px; transition: filter 0.2s ease, transform 0.2s ease; white-space: nowrap; }
     .gmn-btn:hover { filter: brightness(1.08); transform: translateY(-1px); }
 
-    .reviews-rolling { position: relative; overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent); mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent); }
-    .reviews-track { display: flex; gap: 20px; width: max-content; animation: reviewsScroll 90s linear infinite; }
-    .reviews-rolling:hover .reviews-track { animation-play-state: paused; }
-    @keyframes reviewsScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-    .rev-card { flex: 0 0 350px; width: 350px; background: #fff; color: #202124; border-radius: 16px; padding: 22px 24px; text-align: left; box-shadow: 0 8px 28px rgba(0,0,0,0.20); display: flex; flex-direction: column; }
+    .reviews-carousel { position: relative; }
+    .reviews-track { display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; padding: 8px 24px 22px; cursor: grab; scrollbar-width: none; -ms-overflow-style: none; }
+    .reviews-track::-webkit-scrollbar { display: none; }
+    .reviews-track.dragging { cursor: grabbing; scroll-behavior: auto; scroll-snap-type: none; }
+    .rev-nav { position: absolute; top: calc(50% - 8px); transform: translateY(-50%); z-index: 4; width: 50px; height: 50px; border-radius: 50%; background: #fff; color: #202124; border: none; box-shadow: 0 6px 22px rgba(0,0,0,0.30); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: transform 0.2s ease, background 0.2s ease; }
+    .rev-nav:hover { background: #f1f3f4; transform: translateY(-50%) scale(1.08); }
+    .rev-nav svg { width: 22px; height: 22px; }
+    .rev-nav-prev { left: 6px; }
+    .rev-nav-next { right: 6px; }
+    .rev-card { flex: 0 0 350px; width: 350px; background: #fff; color: #202124; border-radius: 16px; padding: 22px 24px; text-align: left; box-shadow: 0 8px 28px rgba(0,0,0,0.20); display: flex; flex-direction: column; scroll-snap-align: center; }
     .rev-top { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
     .rev-avatar { width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-family: var(--font-primary); font-weight: 600; font-size: 1.05rem; flex-shrink: 0; }
     .rev-id { flex: 1; min-width: 0; }
@@ -1747,5 +1752,5 @@
     .rev-g { width: 20px; height: 20px; flex-shrink: 0; }
     .rev-stars { color: #FBBC04; font-size: 1rem; letter-spacing: 2px; margin-bottom: 10px; }
     .rev-text { font-size: 0.95rem; line-height: 1.65; color: #3c4043; }
-    @media (max-width: 768px) { .rev-card { flex-basis: 286px; width: 286px; } .gmn-card { padding: 16px 18px; gap: 14px; } }
-    @media (prefers-reduced-motion: reduce) { .reviews-track { animation: none; } .reviews-rolling { overflow-x: auto; } }
+    @media (max-width: 768px) { .rev-card { flex-basis: 284px; width: 284px; } .gmn-card { padding: 16px 18px; gap: 14px; } .rev-nav { width: 42px; height: 42px; } .rev-nav-prev { left: 2px; } .rev-nav-next { right: 2px; } .reviews-track { padding: 8px 14px 20px; } }
+    @media (prefers-reduced-motion: reduce) { .reviews-track { scroll-behavior: auto; } }
