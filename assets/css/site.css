@@ -1720,3 +1720,32 @@
       .pat-hero { padding: 140px 0 68px; }
       .pat-hero-glow { width: 320px; height: 320px; }
     }
+
+
+    /* ===== AVALIACOES GOOGLE ===== */
+    .gmn { display: flex; justify-content: center; margin: 4px 0 44px; }
+    .gmn-card { display: flex; align-items: center; gap: 20px; background: #fff; border-radius: 18px; padding: 18px 28px; box-shadow: 0 14px 44px rgba(0,0,0,0.28); flex-wrap: wrap; justify-content: center; }
+    .gmn-g { width: 42px; height: 42px; flex-shrink: 0; }
+    .gmn-info { text-align: left; }
+    .gmn-rating { display: flex; align-items: center; gap: 10px; }
+    .gmn-score { font-family: var(--font-primary); font-size: 2rem; font-weight: 700; color: #202124; line-height: 1; }
+    .gmn-stars { color: #FBBC04; font-size: 1.3rem; letter-spacing: 2px; }
+    .gmn-sub { font-size: 0.86rem; color: #5f6368; margin-top: 5px; }
+    .gmn-btn { background: #1a73e8; color: #fff; font-family: var(--font-body); font-weight: 600; font-size: 0.9rem; text-decoration: none; padding: 12px 22px; border-radius: 100px; transition: filter 0.2s ease, transform 0.2s ease; white-space: nowrap; }
+    .gmn-btn:hover { filter: brightness(1.08); transform: translateY(-1px); }
+
+    .reviews-rolling { position: relative; overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent); mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent); }
+    .reviews-track { display: flex; gap: 20px; width: max-content; animation: reviewsScroll 90s linear infinite; }
+    .reviews-rolling:hover .reviews-track { animation-play-state: paused; }
+    @keyframes reviewsScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .rev-card { flex: 0 0 350px; width: 350px; background: #fff; color: #202124; border-radius: 16px; padding: 22px 24px; text-align: left; box-shadow: 0 8px 28px rgba(0,0,0,0.20); display: flex; flex-direction: column; }
+    .rev-top { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+    .rev-avatar { width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-family: var(--font-primary); font-weight: 600; font-size: 1.05rem; flex-shrink: 0; }
+    .rev-id { flex: 1; min-width: 0; }
+    .rev-name { display: block; font-weight: 600; font-size: 0.98rem; color: #202124; }
+    .rev-meta { display: block; font-size: 0.8rem; color: #5f6368; }
+    .rev-g { width: 20px; height: 20px; flex-shrink: 0; }
+    .rev-stars { color: #FBBC04; font-size: 1rem; letter-spacing: 2px; margin-bottom: 10px; }
+    .rev-text { font-size: 0.95rem; line-height: 1.65; color: #3c4043; }
+    @media (max-width: 768px) { .rev-card { flex-basis: 286px; width: 286px; } .gmn-card { padding: 16px 18px; gap: 14px; } }
+    @media (prefers-reduced-motion: reduce) { .reviews-track { animation: none; } .reviews-rolling { overflow-x: auto; } }
