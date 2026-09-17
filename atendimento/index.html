@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#075e54">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>Script Dr. Samuel</title>
+<style>
+  :root {
+    --bg: #ffffff;
+    --ink: #111b21;
+    --muted: #667781;
+    --green: #25d366;
+    --green-dark: #128c7e;
+    --green-deep: #075e54;
+    --bubble: #dcf8c6;
+    --bubble-edge: #b9e8a3;
+    --line: #e9edef;
+    --tag: #fff3c4;
+    --tag-ink: #7a5a00;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font: 15px/1.5 -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    padding-block: 0 48px;
+    padding-inline: 16px;
+  }
+  .wrap { max-width: 620px; margin: 0 auto; }
+  header {
+    position: sticky; top: env(safe-area-inset-top, 0px); z-index: 2;
+    background: var(--green-deep); color: #fff;
+    margin: 0 -16px 16px; padding: 14px 16px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  header .avatar {
+    width: 40px; height: 40px; border-radius: 50%; flex: none;
+    background: var(--green); color: var(--green-deep);
+    display: grid; place-items: center; font-weight: 700;
+  }
+  header h1 { margin: 0; font-size: 17px; font-weight: 600; }
+  header p { margin: 0; font-size: 12px; opacity: .8; }
+  nav { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 20px; }
+  nav a {
+    font-size: 13px; font-weight: 600; color: var(--green-deep); text-decoration: none;
+    background: #e7f8ee; border: 1px solid #c6ecd6; border-radius: 999px; padding: 5px 12px;
+  }
+  nav a:hover, nav a:focus-visible { background: #d3f3e0; outline: none; }
+  .rules {
+    background: #f0f2f5; border-radius: 10px; padding: 12px 16px 12px 32px;
+    margin: 0 0 28px; font-size: 14px; color: #3b4a54;
+  }
+  .rules li + li { margin-top: 4px; }
+  h2 {
+    font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+    color: var(--green-dark); margin: 32px 0 10px; text-wrap: balance;
+    display: flex; align-items: center; gap: 10px; scroll-margin-top: 80px;
+  }
+  h2::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+  h3 { font-size: 14px; font-weight: 600; margin: 18px 0 6px; color: var(--ink); }
+  .note { font-size: 13px; color: var(--muted); margin: 0 0 10px; }
+  .chat { display: flex; flex-direction: column; gap: 8px; }
+  .msg {
+    position: relative; align-self: flex-end;
+    max-width: 92%; background: var(--bubble); border: 1px solid var(--bubble-edge);
+    border-radius: 12px 2px 12px 12px; padding: 9px 12px 26px;
+    white-space: pre-line; font-size: 15px;
+  }
+  .msg b { font-weight: 600; color: var(--tag-ink); background: var(--tag); border-radius: 4px; padding: 0 3px; }
+  .msg button {
+    position: absolute; right: 8px; bottom: 5px;
+    border: 0; background: transparent; color: var(--green-dark);
+    font: 600 11px/1 inherit; font-family: inherit; letter-spacing: .04em;
+    padding: 4px 6px; border-radius: 6px; cursor: pointer;
+  }
+  .msg button:hover, .msg button:focus-visible { background: rgba(18,140,126,.12); outline: none; }
+  .msg button.ok { color: var(--green-deep); }
+  .tip {
+    font-size: 13px; color: #3b4a54; background: #f0f2f5; border-left: 3px solid var(--green);
+    border-radius: 0 8px 8px 0; padding: 8px 12px; margin: 12px 0 0;
+  }
+  footer { margin-top: 36px; font-size: 13px; color: var(--muted); text-align: center; }
+  @media (prefers-reduced-motion: no-preference) { .msg button { transition: background .15s; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="avatar">DS</div>
+    <div>
+      <h1>Dr. Samuel · Quiropraxia</h1>
+      <p>Script de atendimento no WhatsApp</p>
+    </div>
+  </header>
+
+  <nav>
+    <a href="#fluxo">Fluxo</a>
+    <a href="#objecoes">Objeções</a>
+    <a href="#ganchos">Ganchos de retorno</a>
+    <a href="#pos">Pós-consulta</a>
+  </nav>
+
+  <ul class="rules">
+    <li>Responder em até <strong>5 minutos</strong>. Lead de anúncio esfria rápido.</li>
+    <li>Mensagens curtas, <strong>uma pergunta por vez</strong>, sempre chamar pelo nome.</li>
+    <li>Nunca diagnosticar nem prometer cura. Quem avalia é o Dr. Samuel, presencialmente.</li>
+    <li>Objetivo de toda conversa: <strong>agendar a avaliação</strong>.</li>
+    <li>Toque em <strong>Copiar</strong> na mensagem e cole no WhatsApp. Troque o que está em <b style="background:var(--tag);color:var(--tag-ink);border-radius:4px;padding:0 3px;font-weight:600">amarelo</b>.</li>
+  </ul>
+
+  <h2 id="fluxo">1. Abertura</h2>
+  <div class="chat">
+    <div class="msg">Oi, <b>[NOME]</b>! Tudo bem? Aqui é a <b>[ATENDENTE]</b>, da clínica do Dr. Samuel 😊
+Vi que você se interessou pela quiropraxia. Me conta: o que tá te incomodando hoje?<button>Copiar</button></div>
+  </div>
+
+  <h2>2. Qualificação</h2>
+  <p class="note">Uma pergunta de cada vez. Espera a resposta antes da próxima.</p>
+  <div class="chat">
+    <div class="msg">Entendi. Há quanto tempo você sente isso?<button>Copiar</button></div>
+    <div class="msg">E isso tá atrapalhando seu dia a dia? Dormir, trabalhar, fazer exercício…<button>Copiar</button></div>
+    <div class="msg">Você já fez algum tratamento pra isso antes?<button>Copiar</button></div>
+  </div>
+
+  <h2>3. Apresentar a avaliação</h2>
+  <div class="chat">
+    <div class="msg"><b>[NOME]</b>, pelo que você me contou, faz muito sentido passar por uma avaliação com o Dr. Samuel.
+Na avaliação ele vai entender a origem do problema, fazer exame físico e postural e já explicar o que pode ser feito no seu caso. Se fizer sentido, o primeiro ajuste já é feito na hora.
+Dura em torno de <b>[DURAÇÃO]</b> minutos.<button>Copiar</button></div>
+  </div>
+
+  <h2>4. Valor</h2>
+  <div class="chat">
+    <div class="msg">A avaliação fica em R$ <b>[VALOR]</b> e já inclui o primeiro atendimento. Aceitamos Pix, cartão e <b>[OUTRAS FORMAS]</b>.<button>Copiar</button></div>
+  </div>
+
+  <h2>5. Agendamento</h2>
+  <p class="note">Sempre oferecer duas opções, nunca perguntar "quando você pode?".</p>
+  <div class="chat">
+    <div class="msg">Tenho horário <b>[DIA]</b> às <b>[HORA]</b> ou <b>[DIA]</b> às <b>[HORA]</b>. Qual fica melhor pra você?<button>Copiar</button></div>
+  </div>
+
+  <h2>6. Confirmação</h2>
+  <div class="chat">
+    <div class="msg">Agendado! ✅
+📅 <b>[DIA]</b>, às <b>[HORA]</b>
+📍 <b>[ENDEREÇO]</b> — <b>[REFERÊNCIA]</b>
+Vem com roupa confortável e, se tiver exame de imagem (raio-x, ressonância), traz junto.
+Qualquer dúvida é só me chamar aqui. Até lá, <b>[NOME]</b>!<button>Copiar</button></div>
+  </div>
+
+  <h2>7. Lembrete (véspera)</h2>
+  <div class="chat">
+    <div class="msg">Oi, <b>[NOME]</b>! Passando pra lembrar da sua avaliação amanhã às <b>[HORA]</b> com o Dr. Samuel. Confirma pra mim? 😊<button>Copiar</button></div>
+  </div>
+
+  <!-- ===================== OBJEÇÕES ===================== -->
+
+  <h2 id="objecoes">Objeções · Preço</h2>
+
+  <h3>"Quanto custa?" (logo de cara)</h3>
+  <div class="chat">
+    <div class="msg">Te passo o valor já, <b>[NOME]</b>. Só me conta antes: o que tá te incomodando? Assim te explico direitinho o que a avaliação inclui no seu caso.<button>Copiar</button></div>
+  </div>
+
+  <h3>"Tá caro" / "Vou pensar"</h3>
+  <div class="chat">
+    <div class="msg">Entendo, <b>[NOME]</b>. Só pra você ter em mente: a avaliação já inclui o primeiro atendimento, não é só uma consulta pra olhar. E quanto mais tempo a dor fica, mais difícil de tratar. Quer que eu deixe um horário reservado pra você decidir com calma?<button>Copiar</button></div>
+  </div>
+
+  <h3>"Faz desconto?"</h3>
+  <div class="chat">
+    <div class="msg">O valor da avaliação já é o mais acessível que a gente consegue, <b>[NOME]</b>, porque ela inclui o primeiro atendimento. O que dá pra fazer é parcelar no cartão em <b>[N]</b>x. Assim fica tranquilo?<button>Copiar</button></div>
+  </div>
+
+  <h3>"Tô sem dinheiro agora"</h3>
+  <div class="chat">
+    <div class="msg">Sem problema, <b>[NOME]</b>. Me fala uma coisa: se eu conseguir um horário pra <b>[DATA MAIS PRA FRENTE]</b>, ajuda? Aí você já deixa reservado e se organiza com calma.<button>Copiar</button></div>
+  </div>
+
+  <h3>"Achei mais barato em outro lugar"</h3>
+  <div class="chat">
+    <div class="msg">Entendo, <b>[NOME]</b>. Só vale conferir se lá a avaliação também inclui o atendimento ou se cobram separado. Aqui o Dr. Samuel avalia, explica seu caso e já faz o primeiro ajuste na mesma visita. Se quiser, te reservo um horário sem compromisso.<button>Copiar</button></div>
+  </div>
+
+  <h3>"Aceita convênio?"</h3>
+  <div class="chat">
+    <div class="msg">Não trabalhamos com convênio, mas emitimos recibo pra reembolso. E o valor da avaliação é R$ <b>[VALOR]</b>, já com o primeiro atendimento.<button>Copiar</button></div>
+  </div>
+
+  <h3>"Quantas sessões vou precisar? Quanto vai custar no total?"</h3>
+  <div class="chat">
+    <div class="msg">Isso só o Dr. Samuel consegue te dizer depois de avaliar, <b>[NOME]</b>. Cada caso é um caso: tem gente que resolve em poucas sessões, outros precisam de um acompanhamento maior. Na avaliação ele já te passa o plano e o valor certinho, sem surpresa.<button>Copiar</button></div>
+  </div>
+
+  <h2>Objeções · Medo e dúvida</h2>
+
+  <h3>"Quiropraxia dói? É seguro? Estala?"</h3>
+  <div class="chat">
+    <div class="msg">Não dói, <b>[NOME]</b>. O ajuste é rápido e controlado. O "estalo" que a gente ouve é só a liberação de gás na articulação, é normal e não machuca. O Dr. Samuel explica tudo antes de fazer qualquer coisa.<button>Copiar</button></div>
+  </div>
+
+  <h3>"Tenho medo" / "Vi vídeo na internet"</h3>
+  <div class="chat">
+    <div class="msg">Muita gente chega com esse receio, <b>[NOME]</b>, é normal. O que você vê nos vídeos é a parte "show". Na prática o Dr. Samuel avalia primeiro, explica cada movimento e só faz o que você se sentir confortável. Nada é feito no susto.<button>Copiar</button></div>
+  </div>
+
+  <h3>"Não é só massagem?"</h3>
+  <div class="chat">
+    <div class="msg">Não, <b>[NOME]</b>. Massagem trabalha o músculo. A quiropraxia trabalha a coluna e as articulações, que muitas vezes são a origem da dor. Por isso a avaliação é tão importante: pra achar a causa, não só aliviar o sintoma.<button>Copiar</button></div>
+  </div>
+
+  <h3>"Tenho hérnia" / "Já fiz fisio e não resolveu"</h3>
+  <div class="chat">
+    <div class="msg">Muitos pacientes chegam assim. Justamente por isso a avaliação é importante: o Dr. Samuel vê seu caso e te fala com sinceridade se a quiropraxia é indicada pra você.<button>Copiar</button></div>
+  </div>
+
+  <h3>"Já fui em outro quiropraxista e não adiantou"</h3>
+  <div class="chat">
+    <div class="msg">Poxa, <b>[NOME]</b>, entendo a frustração. O resultado depende muito da avaliação e do plano que é montado. O Dr. Samuel vai olhar seu caso do zero e te dizer com honestidade o que dá pra fazer. Vale a chance de uma segunda opinião.<button>Copiar</button></div>
+  </div>
+
+  <h3>"E se não funcionar? Tem garantia?"</h3>
+  <div class="chat">
+    <div class="msg">Nenhum tratamento sério promete garantia, <b>[NOME]</b>, e a gente prefere ser honesto com você. O que eu te garanto é que na avaliação o Dr. Samuel te fala se o seu caso é indicado ou não. Se não for, ele te orienta pra onde ir.<button>Copiar</button></div>
+  </div>
+
+  <h3>"Preciso fazer raio-x antes?"</h3>
+  <div class="chat">
+    <div class="msg">Não precisa, <b>[NOME]</b>. Se você já tiver algum exame, traz que ajuda. Se não tiver, o Dr. Samuel avalia e, se precisar, ele mesmo pede.<button>Copiar</button></div>
+  </div>
+
+  <h3>"Estou grávida, pode?"</h3>
+  <div class="chat">
+    <div class="msg">Pode sim, <b>[NOME]</b>. A quiropraxia é muito procurada na gestação justamente por causa da dor lombar. Vou te encaixar na agenda e já aviso o Dr. Samuel que você está grávida, pra ele adaptar o atendimento.<button>Copiar</button></div>
+  </div>
+
+  <h3>"É pra criança / idoso / meu pai"</h3>
+  <div class="chat">
+    <div class="msg">Atendemos sim, <b>[NOME]</b>. O Dr. Samuel adapta a técnica pra cada idade. Me conta o que está acontecendo com <b>[ELE/ELA]</b> que eu já passo pra ele antes da avaliação.<button>Copiar</button></div>
+  </div>
+
+  <h2>Objeções · Tempo e decisão</h2>
+
+  <h3>"Fica longe" / "Não tenho tempo"</h3>
+  <div class="chat">
+    <div class="msg">Temos horários <b>[MANHÃ CEDO / ALMOÇO / FIM DE TARDE / SÁBADO]</b>. Qual encaixa melhor na sua rotina?<button>Copiar</button></div>
+  </div>
+
+  <h3>"Vou ver com meu marido / minha esposa"</h3>
+  <div class="chat">
+    <div class="msg">Claro, <b>[NOME]</b>! Pra facilitar, te mando um resumo que você pode encaminhar: avaliação com o Dr. Samuel, R$ <b>[VALOR]</b>, já inclui o primeiro atendimento, dura <b>[DURAÇÃO]</b> min, em <b>[BAIRRO]</b>. Posso deixar um horário reservado até <b>[DIA]</b> pra vocês decidirem?<button>Copiar</button></div>
+  </div>
+
+  <h3>"Só tô pesquisando" / "Só queria saber o valor"</h3>
+  <div class="chat">
+    <div class="msg">Tranquilo, <b>[NOME]</b>! O valor é R$ <b>[VALOR]</b>, com o primeiro atendimento incluso. Posso te perguntar o que te fez procurar? Assim, quando você decidir, já te encaixo no horário certo.<button>Copiar</button></div>
+  </div>
+
+  <h3>"A dor passou" / "Tomei remédio e melhorou"</h3>
+  <div class="chat">
+    <div class="msg">Que bom que aliviou, <b>[NOME]</b>! Só um alerta: remédio tira a dor, mas não resolve a causa. Quando ela volta, geralmente vem mais forte. Que tal aproveitar que está bem pra fazer a avaliação com calma?<button>Copiar</button></div>
+  </div>
+
+  <h3>"Já tô fazendo fisio / pilates / RPG"</h3>
+  <div class="chat">
+    <div class="msg">Ótimo, <b>[NOME]</b>. A quiropraxia não substitui, ela complementa. Muitos pacientes fazem junto e sentem o resultado mais rápido. O Dr. Samuel avalia e te fala como encaixar no que você já faz.<button>Copiar</button></div>
+  </div>
+
+  <h3>"Quero falar direto com o Dr. Samuel"</h3>
+  <div class="chat">
+    <div class="msg">Ele está em atendimento agora, <b>[NOME]</b>, mas eu passo tudo pra ele. Me conta o que você precisa que eu já adianto, e na avaliação ele tira todas as suas dúvidas pessoalmente.<button>Copiar</button></div>
+  </div>
+
+  <h3>"Atende em casa / a domicílio?"</h3>
+  <div class="chat">
+    <div class="msg">O atendimento é na clínica, <b>[NOME]</b>, porque a mesa e a estrutura fazem diferença no resultado. Fica em <b>[ENDEREÇO]</b>, com <b>[ESTACIONAMENTO / FÁCIL ACESSO]</b>. Tenho horário <b>[DIA]</b> às <b>[HORA]</b>, quer?<button>Copiar</button></div>
+  </div>
+
+  <!-- ===================== GANCHOS ===================== -->
+
+  <h2 id="ganchos">Ganchos de retorno · Cadência</h2>
+  <p class="note">Quando a pessoa some: <strong>1 hora → 1 dia → 3 dias → 7 dias → 30 dias</strong>. No máximo uma mensagem por etapa. Se responder, volta pro fluxo normal. Escolha o gancho pelo momento em que ela parou.</p>
+
+  <h3>Sumiu logo na abertura (não respondeu a primeira pergunta)</h3>
+  <div class="chat">
+    <div class="msg">Oi, <b>[NOME]</b>! Vi que você chamou a gente pelo anúncio. Me conta rapidinho o que tá te incomodando que eu já te ajudo 😊<button>Copiar</button></div>
+    <div class="msg"><b>[NOME]</b>, é dor nas costas, pescoço, ou outra coisa? Só pra eu já direcionar pro Dr. Samuel.<button>Copiar</button></div>
+  </div>
+
+  <h3>Sumiu depois do valor (o mais comum)</h3>
+  <div class="chat">
+    <div class="msg"><b>[NOME]</b>, ficou alguma dúvida sobre o valor ou sobre como funciona a avaliação? Tô por aqui 😊<button>Copiar</button></div>
+    <div class="msg">Oi, <b>[NOME]</b>! Só lembrando que a avaliação já inclui o primeiro atendimento, então você já sai da clínica com o primeiro ajuste feito. Quer que eu veja um horário pra você?<button>Copiar</button></div>
+    <div class="msg"><b>[NOME]</b>, dá pra parcelar no cartão em <b>[N]</b>x, se ajudar. Posso te encaixar <b>[DIA]</b> às <b>[HORA]</b>?<button>Copiar</button></div>
+  </div>
+
+  <h3>Sumiu depois dos horários</h3>
+  <div class="chat">
+    <div class="msg"><b>[NOME]</b>, consegui segurar o horário de <b>[DIA]</b> às <b>[HORA]</b> pra você até <b>[HORA LIMITE]</b>. Confirmo?<button>Copiar</button></div>
+    <div class="msg">Oi, <b>[NOME]</b>! Os horários que te passei já foram preenchidos, mas abriu <b>[DIA]</b> às <b>[HORA]</b>. Quer que eu reserve?<button>Copiar</button></div>
+  </div>
+
+  <h3>Agendou e não confirmou o lembrete</h3>
+  <div class="chat">
+    <div class="msg"><b>[NOME]</b>, tudo certo pra hoje às <b>[HORA]</b>? Só me confirma pra eu garantir seu horário com o Dr. Samuel 🙏<button>Copiar</button></div>
+    <div class="msg"><b>[NOME]</b>, se aconteceu algum imprevisto, me avisa que eu remarco sem problema. Só não quero que você perca a vaga.<button>Copiar</button></div>
+  </div>
+
+  <h3>Não compareceu (no-show)</h3>
+  <div class="chat">
+    <div class="msg">Oi, <b>[NOME]</b>! Sentimos sua falta hoje. Aconteceu alguma coisa? Se quiser, remarco pra <b>[DIA]</b> às <b>[HORA]</b>, sem custo nenhum.<button>Copiar</button></div>
+    <div class="msg"><b>[NOME]</b>, o Dr. Samuel deixou um horário reservado pra você <b>[DIA]</b>. Consegue vir? Se preferir outro dia, me fala que a gente encaixa.<button>Copiar</button></div>
+  </div>
+
+  <h2>Ganchos de retorno · Com conteúdo</h2>
+  <p class="note">Pra usar entre o dia 3 e o dia 7. Não fala de venda, dá um motivo pra pessoa responder.</p>
+
+  <h3>Dica rápida</h3>
+  <div class="chat">
+    <div class="msg">Oi, <b>[NOME]</b>! Uma dica do Dr. Samuel pra quem tem <b>[DOR QUE ELA CITOU]</b>: <b>[DICA CURTA — ex: evite ficar mais de 1h sentado sem levantar]</b>. Alivia um pouco até você conseguir vir aqui 😉<button>Copiar</button></div>
+  </div>
+
+  <h3>Vídeo do Dr. Samuel</h3>
+  <div class="chat">
+    <div class="msg"><b>[NOME]</b>, o Dr. Samuel gravou um vídeo curtinho explicando exatamente o que você me contou. Dá uma olhada: <b>[LINK]</b>. Depois me fala o que achou!<button>Copiar</button></div>
+  </div>
+
+  <h3>Depoimento</h3>
+  <div class="chat">
+    <div class="msg">Oi, <b>[NOME]</b>! Lembrei de você: atendemos essa semana uma paciente com <b>[MESMA QUEIXA]</b> e ela mandou isso: "<b>[DEPOIMENTO CURTO]</b>". Quer tentar também?<button>Copiar</button></div>
+  </div>
+
+  <h3>Vaga que abriu</h3>
+  <div class="chat">
+    <div class="msg"><b>[NOME]</b>, abriu uma vaga <b>[DIA]</b> às <b>[HORA]</b> com o Dr. Samuel que normalmente demora pra liberar. Pensei em você. Quer?<button>Copiar</button></div>
+  </div>
+
+  <h3>Pergunta sincera</h3>
+  <div class="chat">
+    <div class="msg"><b>[NOME]</b>, posso te perguntar uma coisa? A dor continua ou melhorou? Se continua, não deixa passar. Se melhorou, fico feliz de verdade 🙏<button>Copiar</button></div>
+  </div>
+
+  <h2>Ganchos de retorno · Encerramento e reativação</h2>
+
+  <h3>Mensagem de encerramento (dia 7, costuma ter resposta)</h3>
+  <div class="chat">
+    <div class="msg"><b>[NOME]</b>, não quero ficar te incomodando. Posso encerrar seu atendimento por aqui ou ainda faz sentido a gente marcar sua avaliação?<button>Copiar</button></div>
+    <div class="msg"><b>[NOME]</b>, vou deixar seu contato aqui salvo. Quando quiser cuidar disso, é só me chamar que a gente encaixa você. Se cuida! 🙏<button>Copiar</button></div>
+  </div>
+
+  <h3>Lead frio (15 a 30 dias depois)</h3>
+  <div class="chat">
+    <div class="msg">Oi, <b>[NOME]</b>! Aqui é a <b>[ATENDENTE]</b>, da clínica do Dr. Samuel. A gente conversou um tempo atrás sobre <b>[QUEIXA]</b>. Como você tá? Conseguiu resolver?<button>Copiar</button></div>
+    <div class="msg"><b>[NOME]</b>, esse mês o Dr. Samuel abriu <b>[CONDIÇÃO ESPECIAL — ex: horários extras aos sábados / avaliação com valor promocional até dia X]</b>. Lembrei de você. Quer aproveitar?<button>Copiar</button></div>
+  </div>
+
+  <h3>Reativação de paciente antigo (já foi atendido e sumiu)</h3>
+  <div class="chat">
+    <div class="msg">Oi, <b>[NOME]</b>! Faz um tempinho desde seu último atendimento com o Dr. Samuel. Como você tá se sentindo? Já é bom fazer uma revisão. Tenho <b>[DIA]</b> às <b>[HORA]</b>, quer?<button>Copiar</button></div>
+  </div>
+
+  <p class="tip">Depois de 30 dias sem resposta, marca o lead como perdido com o motivo (preço, tempo, medo, sumiu) e para de mandar mensagem. Isso protege o número e ajuda a ver por onde a gente está perdendo.</p>
+
+  <!-- ===================== PÓS ===================== -->
+
+  <h2 id="pos">Pós-consulta (dia seguinte)</h2>
+  <div class="chat">
+    <div class="msg">Oi, <b>[NOME]</b>! Como você tá se sentindo depois do atendimento com o Dr. Samuel?
+Se puder, deixa uma avaliação pra gente aqui: <b>[LINK GOOGLE]</b>. Ajuda muito! 🙏<button>Copiar</button></div>
+  </div>
+
+  <h3>Reagendamento</h3>
+  <div class="chat">
+    <div class="msg">O Dr. Samuel orientou o próximo atendimento pra <b>[PRAZO]</b>. Tenho <b>[DIA]</b> às <b>[HORA]</b> ou <b>[DIA]</b> às <b>[HORA]</b>. Qual prefere?<button>Copiar</button></div>
+  </div>
+
+  <h3>Pedir indicação</h3>
+  <div class="chat">
+    <div class="msg"><b>[NOME]</b>, que bom que você tá melhor! Se conhecer alguém que sofre com o mesmo problema, manda meu contato. Quem vem indicado por você ganha <b>[BENEFÍCIO — ex: 10% na avaliação]</b> 😊<button>Copiar</button></div>
+  </div>
+
+  <footer>Clínica Dr. Samuel · Quiropraxia</footer>
+</div>
+
+<script>
+  document.querySelectorAll('.msg button').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var bubble = btn.parentNode.cloneNode(true);
+      bubble.querySelector('button').remove();
+      var text = bubble.textContent.replace(/^\s+|\s+$/g, '');
+      var done = function () {
+        btn.textContent = 'Copiado ✓'; btn.classList.add('ok');
+        setTimeout(function () { btn.textContent = 'Copiar'; btn.classList.remove('ok'); }, 1500);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, function () { fallback(text); done(); });
+      } else { fallback(text); done(); }
+    });
+  });
+  function fallback(text) {
+    var ta = document.createElement('textarea');
+    ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); } catch (e) {}
+    document.body.removeChild(ta);
+  }
+</script>
+</body>
+</html>

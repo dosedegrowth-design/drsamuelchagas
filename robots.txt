@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /atendimento/
 
 Sitemap: https://drsamuelchagas.com.br/sitemap.xml
