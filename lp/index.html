@@ -88,7 +88,7 @@
       --ff-title:'Archivo',sans-serif; --ff-body:'Inter',sans-serif;
     }
     *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-    html{-webkit-text-size-adjust:100%}
+    html{-webkit-text-size-adjust:100%;overflow-x:hidden}
     body{font-family:var(--ff-body);color:var(--preto);background:var(--branco);line-height:1.6;overflow-x:hidden}
     img{max-width:100%;display:block}
     a{color:inherit;text-decoration:none}
@@ -173,8 +173,9 @@
 
     /* Protocolo / para quem / passos */
     .p3{grid-template-columns:repeat(3,1fr)}
-    .p3 .card h3{font-size:19px;margin:12px 0 8px}
-    .p3 .card p{font-size:14.5px;color:var(--cinza)}
+    .p4{grid-template-columns:repeat(4,1fr)}
+    .p3 .card h3,.p4 .card h3{font-size:19px;margin:12px 0 8px}
+    .p3 .card p,.p4 .card p{font-size:14.5px;color:var(--cinza)}
     .icon-badge{width:46px;height:46px;border-radius:6px;display:flex;align-items:center;justify-content:center;background:var(--offwhite);border:1px solid var(--borda)}
     .sec-dark .icon-badge{background:#222;border-color:rgba(255,255,255,.12)}
     .steps{counter-reset:s;display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
@@ -254,6 +255,7 @@
       .bgrid{grid-template-columns:1fr 1fr;margin-top:26px}
       .dor-grid{grid-template-columns:1fr 1fr}
       .p3,.about,.cta-final,.steps{grid-template-columns:1fr}
+      .p4{grid-template-columns:1fr 1fr}
       .about img{height:320px;order:-1}
       .deps{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -20px;padding:0 20px 8px;scrollbar-width:none}
       .deps::-webkit-scrollbar{display:none}
@@ -262,6 +264,38 @@
       .fab{display:none}
       .cookie{left:12px;right:12px;bottom:84px;max-width:none}
       .sec{padding:48px 0}
+    }
+    @media(max-width:430px){
+      .wrap{padding:0 16px}
+      .hero-inner{padding:24px 0 30px}
+      .hero-badge{font-size:11px;padding:6px 12px;margin-bottom:12px}
+      .hero h1{font-size:25px;line-height:1.14;margin-bottom:12px}
+      .hero-sub{font-size:14.5px;line-height:1.55;margin-bottom:18px}
+      .hero-note{font-size:12.5px}
+      .h2{font-size:23px}
+      .sub{font-size:14.5px}
+      .eyebrow{font-size:11px}
+      .sec{padding:40px 0}
+      .card{padding:15px}
+      .btn{min-height:48px;padding:12px 16px;font-size:15px;line-height:1.25}
+      .btn-lg{min-height:52px;padding:14px 18px;font-size:15.5px}
+      .hd-in{padding:10px 16px}
+      .hd .nav-cta,.hd .btn{min-height:40px;padding:8px 14px;font-size:13px}
+      .dor{padding:14px 40px 14px 15px;gap:6px}
+      .dor b{font-size:14.5px;line-height:1.15}
+      .dor small{font-size:12.5px}
+      .dor .go{top:14px;right:14px}
+      .bgrid{gap:9px;margin-top:20px}
+      .bcard{padding:13px;gap:10px}
+      .bcard b{font-size:13.5px}
+      .bcard small{font-size:12px}
+      .icon-badge{width:40px;height:40px}
+      .p3 .card h3,.p4 .card h3,.p3 .card h3[style]{font-size:16px}
+      .step .n{width:36px;height:36px}
+      .trust{gap:10px 20px;padding:18px 0}
+      .trust .ti{font-size:13px}
+      .dep{flex-basis:88%;padding:18px}
+      svg.ic{width:22px;height:22px}
     }
     @media(max-width:340px){.bgrid{grid-template-columns:1fr}}
   </style>
@@ -439,7 +473,7 @@
   <section class="sec sec-off">
     <div class="wrap">
       <div class="fade" style="max-width:680px;margin-bottom:26px"><span class="eyebrow">Para quem</span><h2 class="h2">Feito para você</h2></div>
-      <div class="grid p3 fade" style="grid-template-columns:repeat(4,1fr)">
+      <div class="grid p4 fade">
         <div class="card"><div class="icon-badge"><svg class="ic"><use href="#i-run"/></svg></div><h3 style="font-size:17px">Atletas</h3><p>Recovery, prevenção de lesões e performance esportiva.</p></div>
         <div class="card"><div class="icon-badge"><svg class="ic"><use href="#i-spine"/></svg></div><h3 style="font-size:17px">Dores crônicas</h3><p>Tratamento para dores persistentes na coluna, lombar e cervical.</p></div>
         <div class="card"><div class="icon-badge"><svg class="ic"><use href="#i-posture"/></svg></div><h3 style="font-size:17px">Quem trabalha sentado</h3><p>Postura, tensão e desconforto do dia a dia.</p></div>
@@ -520,7 +554,7 @@
 
   <!-- 4.15 Sticky mobile + FAB -->
   <div class="sticky" id="stickyBar">
-    <a class="btn btn-wpp btn-block btn-lg" data-cta="botao_fixo" data-msg="Olá! Vim pelo site e quero agendar uma avaliação com o Dr. Samuel." href="https://wa.me/5511913528080" target="_blank" rel="noopener"><svg class="ic"><use href="#i-wpp"/></svg>Agendar avaliação no WhatsApp</a>
+    <a class="btn btn-wpp btn-block btn-lg" data-cta="botao_fixo" data-msg="Olá! Vim pelo site e quero agendar uma avaliação com o Dr. Samuel." href="https://wa.me/5511913528080" target="_blank" rel="noopener"><svg class="ic"><use href="#i-wpp"/></svg>Agendar no WhatsApp</a>
   </div>
   <a class="fab" id="fab" aria-label="Agendar no WhatsApp" data-cta="botao_fixo" data-msg="Olá! Vim pelo site e quero agendar uma avaliação com o Dr. Samuel." href="https://wa.me/5511913528080" target="_blank" rel="noopener"><svg><use href="#i-wpp"/></svg></a>
 
