@@ -145,6 +145,8 @@
     .hero-media img{width:100%;height:520px;object-fit:cover;object-position:center top;border-radius:6px;filter:grayscale(1) contrast(1.03);border:1px solid rgba(255,255,255,.08)}
     .hero-media::after{content:"";position:absolute;inset:0;border-radius:6px;background:linear-gradient(180deg,transparent 55%,rgba(14,14,14,.45) 100%);pointer-events:none}
     .bgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:30px}
+    .benes{background:var(--preto);color:#fff;padding:14px 0 42px}
+    .benes .bgrid{grid-template-columns:repeat(4,1fr);gap:14px;margin-top:0}
     .bcard{border:1px solid rgba(255,255,255,.12);border-radius:6px;padding:16px;display:flex;gap:12px;align-items:flex-start;background:rgba(255,255,255,.02)}
     .bcard .ic{color:#fff;flex-shrink:0}
     .bcard b{display:block;font-family:var(--ff-title);font-weight:700;font-size:15px;text-transform:uppercase;letter-spacing:-.01em}
@@ -245,7 +247,7 @@
       .hero{position:relative}
       .hero-media{position:absolute;inset:0;z-index:0}
       .hero-media img{height:100%;border-radius:0;border:none;opacity:.55;object-position:center 16%}
-      .hero-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,14,14,.40) 0%,rgba(14,14,14,.74) 54%,rgba(14,14,14,.97) 100%)}
+      .hero-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,14,14,.66) 0%,rgba(14,14,14,.52) 34%,rgba(14,14,14,.82) 66%,#0E0E0E 100%)}
       .hero::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.05;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
       .hero-inner{position:relative;z-index:2;padding:30px 0 34px}
       .hero h1{font-size:clamp(23px,6.6vw,31px);line-height:1.1}
@@ -253,6 +255,8 @@
       .hero-badge{margin-bottom:14px}
       .hero-cta .btn{flex:1 1 100%}
       .bgrid{grid-template-columns:1fr 1fr;margin-top:26px}
+      .benes .bgrid{grid-template-columns:1fr 1fr}
+      .benes{padding:6px 0 34px}
       .dor-grid{grid-template-columns:1fr 1fr}
       .p3,.about,.cta-final,.steps{grid-template-columns:1fr}
       .p4{grid-template-columns:1fr 1fr}
@@ -355,20 +359,26 @@
         <div class="hero-inner">
           <span class="hero-badge"><svg class="ic" style="width:16px;height:16px"><use href="#i-shield"/></svg>Dr. Samuel Chagas · Crefito/SP 335633-F</span>
           <h1>Quiropraxia e fisioterapia no Brooklin para quem <em>cansou de conviver com a dor</em></h1>
-          <p class="hero-sub">Avaliação completa e um protocolo sob medida que combina quiropraxia, fisioterapia e terapia por ondas de choque. Atendimento perto da Berrini, de segunda a sábado.</p>
+          <p class="hero-sub">Avaliação completa e protocolo sob medida: quiropraxia, fisioterapia e ondas de choque, perto da Berrini.</p>
           <div class="hero-cta">
             <a class="btn btn-wpp btn-lg" data-cta="hero" data-msg="Olá! Vim pelo site e quero agendar uma avaliação com o Dr. Samuel." href="https://wa.me/5511913528080" target="_blank" rel="noopener"><svg class="ic"><use href="#i-wpp"/></svg>Agendar avaliação no WhatsApp</a>
             <a class="btn btn-outline btn-lg" data-cta="hero_secundario" href="#dor">Onde é a sua dor?</a>
           </div>
           <p class="hero-note">Tire suas dúvidas antes de marcar, sem compromisso.</p>
-          <div class="bgrid">
-            <div class="bcard"><svg class="ic"><use href="#i-star"/></svg><div><b>Nota 5,0 no Google</b><small>75 avaliações de pacientes</small></div></div>
-            <div class="bcard"><svg class="ic"><use href="#i-check"/></svg><div><b>Avaliação completa</b><small>Antes de qualquer ajuste</small></div></div>
-            <div class="bcard"><svg class="ic"><use href="#i-activity"/></svg><div><b>3 abordagens em 1 protocolo</b><small>Quiropraxia, fisio e ondas de choque</small></div></div>
-            <div class="bcard"><svg class="ic"><use href="#i-pin"/></svg><div><b>Perto da Berrini</b><small>Seg a sex até 20h, sáb até 14h</small></div></div>
-          </div>
         </div>
         <div class="hero-media"><img src="/assets/images/dr-samuel-profile.jpg" width="560" height="840" alt="Dr. Samuel Chagas, fisioterapeuta e quiropraxista, durante atendimento" fetchpriority="high"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefícios -->
+  <section class="benes">
+    <div class="wrap">
+      <div class="bgrid">
+        <div class="bcard"><svg class="ic"><use href="#i-star"/></svg><div><b>Nota 5,0 no Google</b><small>75 avaliações de pacientes</small></div></div>
+        <div class="bcard"><svg class="ic"><use href="#i-check"/></svg><div><b>Avaliação completa</b><small>Antes de qualquer ajuste</small></div></div>
+        <div class="bcard"><svg class="ic"><use href="#i-activity"/></svg><div><b>3 abordagens em 1 protocolo</b><small>Quiropraxia, fisio e ondas de choque</small></div></div>
+        <div class="bcard"><svg class="ic"><use href="#i-pin"/></svg><div><b>Perto da Berrini</b><small>Seg a sex até 20h, sáb até 14h</small></div></div>
       </div>
     </div>
   </section>
