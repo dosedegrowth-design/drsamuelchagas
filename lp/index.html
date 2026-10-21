@@ -153,11 +153,11 @@
     .bcard small{display:block;color:#a9a9a9;font-size:13px;margin-top:2px}
 
     /* Faixa confiança */
-    .trustbar{background:var(--offwhite);padding:30px 0}
-    .trust{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--borda);border-radius:6px;background:var(--branco);max-width:900px;margin:0 auto}
-    .trust .ti{display:flex;align-items:center;justify-content:center;gap:10px;padding:16px 16px;font-size:13.5px;font-weight:500;color:#333;border-right:1px solid var(--borda);text-align:center}
+    .trustbar{background:var(--preto);padding:30px 0}
+    .trust{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid rgba(255,255,255,.14);border-radius:6px;background:transparent;max-width:900px;margin:0 auto}
+    .trust .ti{display:flex;align-items:center;justify-content:center;gap:10px;padding:16px 16px;font-size:13.5px;font-weight:500;color:#d8d8d8;border-right:1px solid rgba(255,255,255,.12);text-align:center}
     .trust .ti:last-child{border-right:none}
-    .trust .ic{width:18px;height:18px;flex-shrink:0;color:var(--preto)}
+    .trust .ic{width:18px;height:18px;flex-shrink:0;color:#fff}
 
     /* Cards base */
     .grid{display:grid;gap:14px}
@@ -300,7 +300,7 @@
       .step .n{width:36px;height:36px}
       .trustbar{padding:22px 0}
       .trust{grid-template-columns:1fr 1fr}
-      .trust .ti{font-size:12.5px;padding:14px 10px;border-bottom:1px solid var(--borda)}
+      .trust .ti{font-size:12.5px;padding:14px 10px;border-bottom:1px solid rgba(255,255,255,.12)}
       .trust .ti:nth-child(2n){border-right:none}
       .trust .ti:nth-child(n+3){border-bottom:none}
       .dep{flex-basis:88%;padding:18px}
