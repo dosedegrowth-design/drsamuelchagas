@@ -153,9 +153,11 @@
     .bcard small{display:block;color:#a9a9a9;font-size:13px;margin-top:2px}
 
     /* Faixa confiança */
-    .trust{display:flex;flex-wrap:wrap;justify-content:center;gap:14px 34px;padding:22px 0}
-    .trust .ti{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:500;color:#3a3a3a}
-    .trust .ic{width:20px;height:20px;color:var(--preto)}
+    .trustbar{background:var(--offwhite);padding:30px 0}
+    .trust{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--borda);border-radius:6px;background:var(--branco);max-width:900px;margin:0 auto}
+    .trust .ti{display:flex;align-items:center;justify-content:center;gap:10px;padding:16px 16px;font-size:13.5px;font-weight:500;color:#333;border-right:1px solid var(--borda);text-align:center}
+    .trust .ti:last-child{border-right:none}
+    .trust .ic{width:18px;height:18px;flex-shrink:0;color:var(--preto)}
 
     /* Cards base */
     .grid{display:grid;gap:14px}
@@ -296,12 +298,28 @@
       .icon-badge{width:40px;height:40px}
       .p3 .card h3,.p4 .card h3,.p3 .card h3[style]{font-size:16px}
       .step .n{width:36px;height:36px}
-      .trust{gap:10px 20px;padding:18px 0}
-      .trust .ti{font-size:13px}
+      .trustbar{padding:22px 0}
+      .trust{grid-template-columns:1fr 1fr}
+      .trust .ti{font-size:12.5px;padding:14px 10px;border-bottom:1px solid var(--borda)}
+      .trust .ti:nth-child(2n){border-right:none}
+      .trust .ti:nth-child(n+3){border-bottom:none}
       .dep{flex-basis:88%;padding:18px}
       svg.ic{width:22px;height:22px}
     }
     @media(max-width:340px){.bgrid{grid-template-columns:1fr}}
+
+    /* ===== Centralizacao (textos e botoes) ===== */
+    .hero-inner{text-align:center}
+    .hero-cta{justify-content:center}
+    .hero-sub{margin-left:auto;margin-right:auto}
+    .sec .wrap{text-align:center}
+    .sec .wrap > .fade{margin-left:auto;margin-right:auto}
+    .sub{margin-left:auto;margin-right:auto}
+    .icon-badge{margin-left:auto;margin-right:auto}
+    .step .n{margin-left:auto;margin-right:auto}
+    .about{text-align:center}
+    .about img{margin-left:auto;margin-right:auto}
+    .faq details{text-align:left}
   </style>
 </head>
 <body>
@@ -372,12 +390,14 @@
   </section>
 
   <!-- Faixa de confiança -->
-  <section class="sec-off" style="padding:0">
-    <div class="wrap trust">
-      <span class="ti"><svg class="ic"><use href="#i-star"/></svg>5,0 no Google (75 avaliações)</span>
-      <span class="ti"><svg class="ic"><use href="#i-shield"/></svg>Crefito/SP 335633-F</span>
-      <span class="ti"><svg class="ic"><use href="#i-clock"/></svg>Atendimento com hora marcada</span>
-      <span class="ti"><svg class="ic"><use href="#i-pin"/></svg>Brooklin, São Paulo</span>
+  <section class="trustbar">
+    <div class="wrap">
+      <div class="trust">
+        <span class="ti"><svg class="ic"><use href="#i-star"/></svg>5,0 no Google · 75 avaliações</span>
+        <span class="ti"><svg class="ic"><use href="#i-shield"/></svg>Crefito/SP 335633-F</span>
+        <span class="ti"><svg class="ic"><use href="#i-clock"/></svg>Com hora marcada</span>
+        <span class="ti"><svg class="ic"><use href="#i-pin"/></svg>Brooklin, São Paulo</span>
+      </div>
     </div>
   </section>
 
